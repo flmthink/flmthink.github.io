@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="写故事的人都在路上">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flmthink">
 <meta name="twitter:description" content="写故事的人都在路上">
@@ -149,6 +149,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js构造函数返回值问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/30/js构造函数返回值问题/">js构造函数返回值(return语句)问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/30/js构造函数返回值问题/" class="archive-article-date">
+  	<time datetime="2018-10-30T08:56:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js构造函数返回值-return语句-问题"><a href="#js构造函数返回值-return语句-问题" class="headerlink" title="js构造函数返回值(return语句)问题"></a>js构造函数返回值(return语句)问题</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>js中构造函数,与其他语言不同的是,可以有返回语句,也可以没有返回语句;</p>
+<h2 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h2><p>​    (1) 没有return语句,返回值为实例对象;</p>
+<p>​    (2) 如果return 返回的为非引用类型(如:基本类型 String Number Boolean Null),则与无返回值相同,实际返回值为实例对象;</p>
+<p>​    (3) 如果return 返回的是引用类型,则实际返回值就是这个引用类型数据;</p>
+<h2 id="补充"><a href="#补充" class="headerlink" title="补充:"></a>补充:</h2><p>more&gt;&gt;</p>
+<pre><code>### 引用类型:
+</code></pre><p>​    Object  Array  RegExp Data Function 以及 特殊基本包装类型,还有单体内置对象(Global,Math)</p>
+<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型:"></a>基本类型:</h3><p>​    简单的数据段,如 undefined null string number Boolean</p>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><p>​    (1)引用类型可以添加属性和方法,基本类型不可以;</p>
+<p>​    (2)引用类型存储与堆中,栈中存储遮指针;基本类型仅存于栈中;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">js构造函数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/30/js构造函数返回值问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-JS中this指向问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -171,14 +254,13 @@
       
         <h2 id="概述"><a href="#概述" class="headerlink" title="概述:"></a>概述:</h2><p>​    this的指向是由函数的调用方式来决定的</p>
 <h2 id="例"><a href="#例" class="headerlink" title="例:"></a>例:</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function Foo()&#123;   //构造函数</span><br><span class="line">    return this</span><br><span class="line">&#125;</span><br><span class="line">var getThis=function()&#123;  //声明一个函数表达式,返回值为this</span><br><span class="line">    return this</span><br><span class="line">&#125;</span><br><span class="line">Foo.prototype.getThis=getThis  //Foo构造函数原型上添加一个方法</span><br><span class="line">var foo=new Foo();</span><br><span class="line"></span><br><span class="line">Foo();     //this指向的是 window对象</span><br><span class="line">new Foo()  //this指向的是 实例对象</span><br><span class="line">foo.getThis() //this指向的是 实例对象foo</span><br></pre></td></tr></table></figure>
-<more>
-
+<p>more&gt;&gt;</p>
 <p>Foo()  属于直接调用构造函数,构造函数本质也是函数,可以调用,this为 window对象;</p>
 <p>new Foo() 创建了一个实例对象,故this为 此实例对象.</p>
 <p>foo.getThis()  foo实例对象调用了原型上的getThis方法,故返回的this为本原型对象</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><p>​    直接调用,this指向为window;</p>
 <p>​    实例对象调用,this为本实例对象.</p>
-</more>
+
       
 
       
@@ -191,7 +273,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js;this指向</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">js this指向</a>
         		</li>
       		
 		</ul>
@@ -320,7 +402,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">js;this指向</a>
+                <a href="javascript:void(0)" class="js-tag color5">js this指向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
             
             <div class="clearfix"></div>
