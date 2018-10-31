@@ -149,19 +149,19 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-测试2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-git网络错误问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/31/测试2/">测试2</a>
+      <a class="article-title" href="/2018/10/31/git网络错误问题/">git网络问题导致无法提交</a>
     </h1>
   
 
         
-        <a href="/2018/10/31/测试2/" class="archive-article-date">
+        <a href="/2018/10/31/git网络错误问题/" class="archive-article-date">
   	<time datetime="2018-10-31T06:36:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
 </a>
         
@@ -169,7 +169,10 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>test2,怎么了这是aaaaaaaaaaaa</p>
+        <h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><p>​    昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,<br>    这就很尴尬了,于是测试github连接(ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>),提示”ssh_exchange_identification: read: Connection reset by peer”,这是几个意思?搜索一下,得知大体意思是”连接被重置~~”,这就晕了呀</p>
+<p>###各种尝试:</p>
+<p>​    1.重新生成并设置SSH      无效<br>    2.hosts文件修改, 还是不行<br>    3.前几天用了下码云,改过username,重设user.name和user.email,依旧无效;</p>
+<p>​    最后搜索到,Connection reset by peer问题,可能与网络有关,就有关防火墙什么的,吧啦吧啦–<br>    再加上房东的网最近总出一个毛病就是,腾讯系的网站一律加载很慢,甚至加载不出来.<br>    <b>于是将手机的4G网络共享给电脑,重新测试(hexo d)更新博客,成功了!!!</b></p>
 
       
 
@@ -183,7 +186,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">测试2</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -193,7 +196,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/31/测试2/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/10/31/git网络错误问题/">展开全文 >></a>
         </p>
       
 
@@ -478,11 +481,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">测试2</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
             
             <div class="clearfix"></div>
