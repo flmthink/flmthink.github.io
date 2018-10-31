@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>git网络问题导致无法提交 | Flmthink</title>
+  <title>(==/!=与===/!==)的运算规则 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
-<meta name="keywords" content="git">
+  <meta name="description" content="一、相等(==) 和 不相等(!=)这两个操作符都会先转换操作数(通常称为强制转型)，然后再比较它们的相等性。 基本规则：1.如果有一个操作数是布尔值，则在比较相等性之前现将其转换为数值-false转换为0，true转换为1； 2.如果有一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值； 3.如果一个操作数是对象，另一个操作数不是，则调用对象valueOf( )方法，用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git网络问题导致无法提交">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/git网络错误问题/index.html">
+<meta property="og:title" content="(==&#x2F;!=与===&#x2F;!==)的运算规则">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/等于和不等于的运算机制/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
+<meta property="og:description" content="一、相等(==) 和 不相等(!=)这两个操作符都会先转换操作数(通常称为强制转型)，然后再比较它们的相等性。 基本规则：1.如果有一个操作数是布尔值，则在比较相等性之前现将其转换为数值-false转换为0，true转换为1； 2.如果有一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值； 3.如果一个操作数是对象，另一个操作数不是，则调用对象valueOf( )方法，用">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T07:37:31.962Z">
+<meta property="og:updated_time" content="2018-10-31T10:08:55.185Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git网络问题导致无法提交">
-<meta name="twitter:description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
+<meta name="twitter:title" content="(==&#x2F;!=与===&#x2F;!==)的运算规则">
+<meta name="twitter:description" content="一、相等(==) 和 不相等(!=)这两个操作符都会先转换操作数(通常称为强制转型)，然后再比较它们的相等性。 基本规则：1.如果有一个操作数是布尔值，则在比较相等性之前现将其转换为数值-false转换为0，true转换为1； 2.如果有一个操作数是字符串，另一个操作数是数值，在比较相等性之前先将字符串转换为数值； 3.如果一个操作数是对象，另一个操作数不是，则调用对象valueOf( )方法，用">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -149,31 +148,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git网络错误问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-等于和不等于的运算机制" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git网络问题导致无法提交
+      (==/!=与===/!==)的运算规则
     </h1>
   
 
         
-        <a href="/2018/10/31/git网络错误问题/" class="archive-article-date">
-  	<time datetime="2018-10-31T06:36:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
+        <a href="/2018/10/31/等于和不等于的运算机制/" class="archive-article-date">
+  	<time datetime="2018-10-31T08:34:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><p>昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,<br>这就很尴尬了,于是测试github连接(ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>),提示”ssh_exchange_identification: read: Connection reset by peer”,<br>这是几个意思?搜索一下,得知大体意思是”连接被重置~~”.</p>
+        <h2 id="一、相等-和-不相等"><a href="#一、相等-和-不相等" class="headerlink" title="一、相等(==) 和 不相等(!=)"></a>一、相等(==) 和 不相等(!=)</h2><p>这两个操作符都会先转换操作数(通常称为<strong>强制转型</strong>)，然后再比较它们的相等性。</p>
+<h3 id="基本规则："><a href="#基本规则：" class="headerlink" title="基本规则："></a>基本规则：</h3><p>1.如果有一个操作数是<strong>布尔值</strong>，则在比较相等性之前现将其转换为数值-false转换为0，true转换为1；</p>
+<p>2.如果有一个操作数是<strong>字符串</strong>，另一个操作数是<strong>数值</strong>，在比较相等性之前先将字符串转换为数值；</p>
+<p>3.如果一个操作数是<strong>对象</strong>，另一个操作数不是，则调用对象<strong>valueOf</strong>( )方法，用得到的基本类型值按照前面的规则进行比较；</p>
 <a id="more"></a>
-<h3 id="尝试"><a href="#尝试" class="headerlink" title="尝试:"></a>尝试:</h3><p>​    1.重新生成并设置SSH      无效<br>    2.hosts文件修改, 还是不行<br>    3.前几天用了下码云,改过username,重设user.name和user.email,依旧无效;</p>
-<p>最后搜索到,Connection reset by peer问题,可能与网络有关,就有关防火墙什么的,吧啦吧啦–<br>再加上房东的网最近总出一个毛病就是,腾讯系的网站一律加载很慢,甚至加载不出来.</p>
-<p><b>于是将手机的4G网络共享给电脑,重新测试(hexo d)更新博客,成功了!!!</b></p>
+<h3 id="特例"><a href="#特例" class="headerlink" title="特例:"></a>特例:</h3><p>1.<strong>null和undefined是相等的</strong>;（ES中规定的: <strong>==时返回true</strong>;<strong>===时返回false</strong>,因为不属于同一种数据类型）,</p>
+<p>2.要比较相等性之前，不能将 null 和 undefined 转换成其他任何值;</p>
+<p>3.如果有一个操作数是NaN，则相等操作符返回<strong>false</strong>，而不相等操作符返回true。</p>
+<p>重要提示：如果两个操作数都是<strong>NaN</strong>，相等操作符也返回<strong>false</strong>；因为按照规则，<strong>NaN不等于NaN</strong></p>
+<p>4.如果两个操作数都是<strong>对象</strong>，则比较它们是不是同一个对象。如果两个操作数都指向<strong>同一个对象</strong>，则相等操作符返回true，否则，返回false。</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充:"></a>补充:</h3><h4 id="1-NaN-not-a-number"><a href="#1-NaN-not-a-number" class="headerlink" title="1.NaN  (not a number)"></a>1.NaN  (not a number)</h4><p>typeof 为number类型,其实它属于number类型的一种不确定状态:</p>
+<p>(1) 一个表达式中如果有减号(-)、乘号(*) 或 除号(/) 等运算符时，JS引擎会在计算之前试图将运算符两边的变量转化为number类型，如果转化失败，表达式将返回NaN</p>
+<p>(2) 直接使用 parseInt, parseFloat 或 Number 将一个非数字的值转化为数字时，表达式返回NaN</p>
+<p><strong>本身自己都不确定是什么,何来谈== 或者 ===,所以NaN和任何值比较都不相等</strong></p>
+<h4 id="2-null和undefined"><a href="#2-null和undefined" class="headerlink" title="2. null和undefined"></a>2. null和undefined</h4><p>和NaN不同的是，undefined虽然也代表变量的一个状态，但这个状态值是确定唯一的，即当一个变量声明了但没有赋值时，它的状态就是undefined,因此下面表达式是成立的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b;</span><br><span class="line">b == <span class="literal">undefined</span>; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>null类型也只有一个值：null , 表示一个变量中没有包含有效数据。null意为空值的意思，所以,可以通过给一个变量赋值为null来清空变量中的内容;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = <span class="literal">null</span>; </span><br><span class="line">obj == <span class="literal">null</span>; <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-null-typeof为对象的问题"><a href="#3-null-typeof为对象的问题" class="headerlink" title="3.null    typeof为对象的问题"></a>3.null    typeof为对象的问题</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> == <span class="string">'object'</span>  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>null 有属于自己的类型 Null，而不属于Object类型，typeof 之所以会判定为 Object 类型，是因为JavaScript 数据类型在底层都是以二进制的形式表示的，<strong>二进制的前三位为 0 会被 typeof 判断为对象类型</strong>，而 null 的二进制位恰好都是 0 ，因此，null 被误判断为 Object 类型。</p>
+<ul>
+<li>000 – 对象，数据是对象的应用</li>
+<li>1 – 整型，数据是31位带符号整数</li>
+<li>010 – 双精度类型，数据是双精度数字</li>
+<li>100 – 字符串，数据是字符串</li>
+<li>110 – 布尔类型，数据是布尔值</li>
+</ul>
+<p>其实，我们可以通过另一种方法获取 null 的真实类型：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>) ; <span class="comment">// [object Null]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>);<span class="comment">//[object  Undefined]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-null-和-undefined"><a href="#4-null-和-undefined" class="headerlink" title="4.null 和  undefined"></a>4.null 和  undefined</h4><p>都表示 一个无效的值，那么它们所表示的内容也具有相似性，即有</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unll == <span class="literal">undefined</span>  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>但 === 会返回 false ，因为全等操作 === 在比较相等性的时候，不会主动转换分项的数据类型，而两者又不属于同一种类型：</p>
+<h2 id="二、全等-和-不全等"><a href="#二、全等-和-不全等" class="headerlink" title="二、全等(===) 和 不全等(!===)"></a>二、全等(===) 和 不全等(!===)</h2><p>全等与不全等比较操作时,不会主动转换数据类型,并且还会比较数据类型;</p>
 
       
 
@@ -182,17 +209,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -243,7 +259,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/31/git网络错误问题/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/31/等于和不等于的运算机制/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,18 +273,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/10/31/等于和不等于的运算机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (==/!=与===/!==)的运算规则
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/30/js构造函数返回值问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js构造函数返回值(return语句)问题</div>
+    <a href="/2018/10/31/git网络错误问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">git网络问题导致无法提交</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -295,7 +302,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试"><span class="toc-number">2.</span> <span class="toc-text">尝试:</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、相等-和-不相等"><span class="toc-number">1.</span> <span class="toc-text">一、相等(==) 和 不相等(!=)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本规则："><span class="toc-number">1.1.</span> <span class="toc-text">基本规则：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#特例"><span class="toc-number">1.2.</span> <span class="toc-text">特例:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">1.3.</span> <span class="toc-text">补充:</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-NaN-not-a-number"><span class="toc-number">1.3.1.</span> <span class="toc-text">1.NaN  (not a number)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-null和undefined"><span class="toc-number">1.3.2.</span> <span class="toc-text">2. null和undefined</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-null-typeof为对象的问题"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.null    typeof为对象的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-null-和-undefined"><span class="toc-number">1.3.4.</span> <span class="toc-text">4.null 和  undefined</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、全等-和-不全等"><span class="toc-number">2.</span> <span class="toc-text">二、全等(===) 和 不全等(!===)</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -309,7 +316,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="git网络错误问题" data-title="git网络问题导致无法提交" data-url="http://yoursite.com/2018/10/31/git网络错误问题/"></div>
+	<div class="ds-thread" data-thread-key="等于和不等于的运算机制" data-title="(==/!=与===/!==)的运算规则" data-url="http://yoursite.com/2018/10/31/等于和不等于的运算机制/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
