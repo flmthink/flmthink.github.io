@@ -170,9 +170,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法:</p>
-<p><img src="C:\Users\xiaoguang\Desktop\103001155.png" alt=""></p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"star"</span>&gt;</span>★★★★★<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.star</span>&#123;</span><br><span class="line">    color: #ccc;  //底层灰色字体</span><br><span class="line">    position: relative;  //子绝父相</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"★★★★★"</span>;</span><br><span class="line">    color: orange;  //设置字体颜色,橙色</span><br><span class="line">    position: absolute;  //通过设置伪元素绝对定位,实现两排★★★★★重叠</span><br><span class="line">    <span class="selector-tag">left</span>: 0;</span><br><span class="line">    <span class="selector-tag">top</span>: 0;</span><br><span class="line">    width: 90%; //设置百分比宽度,如若80%,那就是四颗黄色的星星,故可以通过js获取具体评分,计算得到具体百分比,然后动态的设置width</span><br><span class="line">    overflow: hidden;  //将超出部分隐藏,于是就显露除了下面灰色星星</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.star</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;  <span class="comment">//底层灰色字体</span></span><br><span class="line">    <span class="attribute">position</span>: relative;  <span class="comment">//子绝父相</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span>::after&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"★★★★★"</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;  <span class="comment">//设置字体颜色,橙色</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;  <span class="comment">//通过设置伪元素绝对定位,实现两排★★★★★重叠</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">//设置百分比宽度,如若80%,那就是四颗黄色的星星,故可以通过js获取具体评分,计算得到具体百分比,然后动态的设置width</span></span><br><span class="line">    <span class="attribute">overflow</span>: hidden;  <span class="comment">//将超出部分隐藏,于是就显露除了下面灰色星星</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>无非就是障眼法,两层星星叠在一起,<br>前面的设置overflow:hidden超出隐藏,通过设置width:n%,实现隐藏的长短,漏出底层的灰色星星;</p>
 
       
@@ -674,15 +673,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">this指向</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
