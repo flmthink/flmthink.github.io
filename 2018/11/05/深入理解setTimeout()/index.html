@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="转载自:https://www.jianshu.com/p/3e482748369d?from=groupmessage 首先我们还是来看那道大家再熟悉不过的前端面试题： 12345for (var i = 1;i &amp;lt;= 5;i ++) &amp;#123;  setTimeout(function timer() &amp;#123;      console.log(i)  &amp;#125;,i * 100">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T07:50:46.706Z">
+<meta property="og:updated_time" content="2018-11-05T09:22:45.248Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解settimeout()">
 <meta name="twitter:description" content="转载自:https://www.jianshu.com/p/3e482748369d?from=groupmessage 首先我们还是来看那道大家再熟悉不过的前端面试题： 12345for (var i = 1;i &amp;lt;= 5;i ++) &amp;#123;  setTimeout(function timer() &amp;#123;      console.log(i)  &amp;#125;,i * 100">
@@ -171,7 +171,7 @@
       
         <p>转载自:<a href="https://www.jianshu.com/p/3e482748369d?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/3e482748369d?from=groupmessage</a></p>
 <p>首先我们还是来看那道大家再熟悉不过的前端面试题：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1;i &lt;= 5;i ++) &#123;</span><br><span class="line">  setTimeout(function timer() &#123;</span><br><span class="line">      console.log(i)</span><br><span class="line">  &#125;,i * 1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i ++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;,i * <span class="number">1000</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <p>我想刚入门的童鞋或者对<strong>JS作用域</strong>、<strong>闭包</strong>以及<strong>事件循环</strong>等概念不了解的童鞋会想当然的认为这道题的答案应该是：<br>第一次循环，隔一秒输出1；<br>第二次循环，隔两秒输出2；<br>第三次循环，隔三秒输出3；<br>第四次循环，隔四秒输出4；<br>第五次循环，隔五秒输出5；<br>或者还有同学预期的结果是分别输出数字1~5，每秒一次，每次一个。</p>
 <p>但实际结果大家去控制台打印了都知道：以一秒的频率连续输出五个6！<br>相信对于很多童鞋第一次看到这个结果是懵的，包括我第一次看到结果是懵逼的！</p>
@@ -483,11 +483,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">

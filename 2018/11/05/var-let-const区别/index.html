@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="作用域:JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。 ECMAScript 6(简称ES6)中新增了块级作用域。块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T09:13:52.868Z">
+<meta property="og:updated_time" content="2018-11-05T11:16:03.296Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="var,let,const区别">
 <meta name="twitter:description" content="作用域:JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。 ECMAScript 6(简称ES6)中新增了块级作用域。块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。">
@@ -176,10 +176,15 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> b=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> c=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);  <span class="comment">//1</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);  <span class="comment">//报错,"b is not defind"</span></span><br><span class="line">    <span class="built_in">console</span>.log(c);  <span class="comment">//报错,"c is not defind"</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
 <h3 id="2-声明时是否要初始化-即赋值"><a href="#2-声明时是否要初始化-即赋值" class="headerlink" title="2.声明时是否要初始化(即赋值):"></a>2.声明时是否要初始化(即赋值):</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="keyword">const</span> c;  <span class="comment">//报错"Missing initializer in const declaration"(const声明中缺少初始化器)</span></span><br><span class="line">		  <span class="comment">//const定义的常量,声明时必须赋值,否则报错</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)  <span class="comment">//undefined </span></span><br><span class="line"><span class="built_in">console</span>.log(b)  <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
 <h3 id="3-是否可以修改值-重新赋值"><a href="#3-是否可以修改值-重新赋值" class="headerlink" title="3.是否可以修改值(重新赋值):"></a>3.是否可以修改值(重新赋值):</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> b=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> c=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a=<span class="number">1</span>);  <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(b=<span class="number">1</span>);  <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(c=<span class="number">1</span>);  <span class="comment">//报错!,"Assignment to constant variable"(大体意思就是,在向恒定的变量赋值)</span></span><br><span class="line"><span class="comment">//简单来说就是, const声明的是常量,不可重新赋值;</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-变量名是否可以重新声明"><a href="#4-变量名是否可以重新声明" class="headerlink" title="4.变量名是否可以重新声明"></a>4.变量名是否可以重新声明</h3><p>let与const不可重新声明已经被任何其他方式声明过的变量名;</p>
+<p>let与const声明的变量名,也不可被任何其他方式再次声明;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="comment">//function a()&#123;&#125;;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>; <span class="comment">//没问题,a被重新声明,且重新赋值</span></span><br><span class="line"><span class="keyword">let</span> a=<span class="number">2</span>; <span class="comment">//报错!"'b' has already been declared"</span></span><br><span class="line"><span class="keyword">const</span> a=<span class="number">3</span>;<span class="comment">//报错!"'b' has already been declared"</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>)</span>&#123;&#125;;<span class="comment">//报错!"'b' has already been declared"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="comment">//const a=0;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a=<span class="number">1</span>; <span class="comment">//报错!"'b' has already been declared"</span></span><br><span class="line"><span class="keyword">let</span> a=<span class="number">1</span>; <span class="comment">//报错!"'b' has already been declared"</span></span><br><span class="line"><span class="keyword">const</span> a=<span class="number">1</span>; <span class="comment">//报错!"'b' has already been declared"</span></span><br></pre></td></tr></table></figure>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><ol>
 <li>var定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问。</li>
 <li>let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问。</li>
 <li>const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，也不能跨函数访问,而且不能修改。</li>
+<li>let与const声明的变量,不可被重新声明;同时这俩方法也不能重新声明已经被声明的变量名;<br>var与function声明的变量,可以被var或者function重新声明覆盖;</li>
 </ol>
 <p>(其实函数有{},也属于块,上面分开来说是为了更好理解)</p>
 
@@ -265,6 +270,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/11/05/for循环中var与let声明条件变量的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          for循环中var与let声明条件变量的区别
+        
+      </div>
+    </a>
+  
   
     <a href="/2018/11/05/深入理解setTimeout()/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">深入理解settimeout()</div>
@@ -294,7 +308,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-是否可跨块访问"><span class="toc-number">2.1.</span> <span class="toc-text">1.是否可跨块访问:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-声明时是否要初始化-即赋值"><span class="toc-number">2.2.</span> <span class="toc-text">2.声明时是否要初始化(即赋值):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-是否可以修改值-重新赋值"><span class="toc-number">2.3.</span> <span class="toc-text">3.是否可以修改值(重新赋值):</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结:</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-是否可跨块访问"><span class="toc-number">2.1.</span> <span class="toc-text">1.是否可跨块访问:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-声明时是否要初始化-即赋值"><span class="toc-number">2.2.</span> <span class="toc-text">2.声明时是否要初始化(即赋值):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-是否可以修改值-重新赋值"><span class="toc-number">2.3.</span> <span class="toc-text">3.是否可以修改值(重新赋值):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-变量名是否可以重新声明"><span class="toc-number">2.4.</span> <span class="toc-text">4.变量名是否可以重新声明</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结:</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -446,11 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
