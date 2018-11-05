@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>半个五角星变黄 | Flmthink</title>
+  <title>var,let,const区别 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+  <meta name="description" content="作用域:JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。 ECMAScript 6(简称ES6)中新增了块级作用域。块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。">
+<meta name="keywords" content="var&#x2F;let&#x2F;const">
 <meta property="og:type" content="article">
-<meta property="og:title" content="半个五角星变黄">
-<meta property="og:url" content="http://yoursite.com/2018/11/03/半个五角星变黄/index.html">
+<meta property="og:title" content="var,let,const区别">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/var-let-const区别/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+<meta property="og:description" content="作用域:JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。 ECMAScript 6(简称ES6)中新增了块级作用域。块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T09:18:00.100Z">
+<meta property="og:updated_time" content="2018-11-05T09:13:52.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="半个五角星变黄">
-<meta name="twitter:description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+<meta name="twitter:title" content="var,let,const区别">
+<meta name="twitter:description" content="作用域:JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。 ECMAScript 6(简称ES6)中新增了块级作用域。块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -148,30 +149,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-半个五角星变黄" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-var-let-const区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      半个五角星变黄
+      var,let,const区别
     </h1>
   
 
         
-        <a href="/2018/11/03/半个五角星变黄/" class="archive-article-date">
-  	<time datetime="2018-11-02T16:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
+        <a href="/2018/11/05/var-let-const区别/" class="archive-article-date">
+  	<time datetime="2018-11-05T08:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"star"</span>&gt;</span>★★★★★<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.star</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;   <span class="comment">//底层灰色字体</span></span><br><span class="line">    <span class="attribute">position</span>: relative;  <span class="comment">//子绝父相</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span>::after&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"★★★★★"</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;  <span class="comment">//设置字体颜色,橙色</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;  <span class="comment">//通过设置伪元素绝对定位,实现两排★★★★★重叠</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">//设置百分比宽度,如若80%,那就是四颗黄色的星星,故可以通过js获取具体评分,计算得到具体百分比,然后动态的设置width</span></span><br><span class="line">    <span class="attribute">overflow</span>: hidden;  <span class="comment">//将超出部分隐藏,于是就显露除了下面灰色星星</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>无非就是障眼法,两层星星叠在一起,<br>前面的设置overflow:hidden超出隐藏,通过设置width:n%,实现隐藏的长短,漏出底层的灰色星星;</p>
+        <h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域:"></a>作用域:</h2><p>JS中作用域有：全局作用域、函数作用域。没有块作用域的概念。</p>
+<p>ECMAScript 6(简称ES6)中新增了块级作用域。<br>块作用域由 { } 包括，if语句和for语句里面的{ }也属于块作用域。</p>
+<a id="more"></a>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别:"></a>区别:</h2><h3 id="1-是否可跨块访问"><a href="#1-是否可跨块访问" class="headerlink" title="1.是否可跨块访问:"></a>1.是否可跨块访问:</h3><p>var定义的变量,没有块级作用域的概念,可以跨块访问,而let const都有块的概念,不可跨块访问;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">let</span> b=<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">const</span> c=<span class="number">3</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);  <span class="comment">//1</span></span><br><span class="line">    <span class="built_in">console</span>.log(b);  <span class="comment">//报错,"b is not defind"</span></span><br><span class="line">    <span class="built_in">console</span>.log(c);  <span class="comment">//报错,"c is not defind"</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<h3 id="2-声明时是否要初始化-即赋值"><a href="#2-声明时是否要初始化-即赋值" class="headerlink" title="2.声明时是否要初始化(即赋值):"></a>2.声明时是否要初始化(即赋值):</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">let</span> b;</span><br><span class="line"><span class="keyword">const</span> c;  <span class="comment">//报错"Missing initializer in const declaration"(const声明中缺少初始化器)</span></span><br><span class="line">		  <span class="comment">//const定义的常量,声明时必须赋值,否则报错</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a)  <span class="comment">//undefined </span></span><br><span class="line"><span class="built_in">console</span>.log(b)  <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="3-是否可以修改值-重新赋值"><a href="#3-是否可以修改值-重新赋值" class="headerlink" title="3.是否可以修改值(重新赋值):"></a>3.是否可以修改值(重新赋值):</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">let</span> b=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">const</span> c=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a=<span class="number">1</span>);  <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(b=<span class="number">1</span>);  <span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(c=<span class="number">1</span>);  <span class="comment">//报错!,"Assignment to constant variable"(大体意思就是,在向恒定的变量赋值)</span></span><br><span class="line"><span class="comment">//简单来说就是, const声明的是常量,不可重新赋值;</span></span><br></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结:"></a>总结:</h2><ol>
+<li>var定义的变量，没有块的概念，可以跨块访问, 不能跨函数访问。</li>
+<li>let定义的变量，只能在块作用域里访问，不能跨块访问，也不能跨函数访问。</li>
+<li>const用来定义常量，使用时必须初始化(即必须赋值)，只能在块作用域里访问，也不能跨函数访问,而且不能修改。</li>
+</ol>
+<p>(其实函数有{},也属于块,上面分开来说是为了更好理解)</p>
 
       
 
@@ -180,6 +190,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">var/let/const</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -230,7 +251,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/03/半个五角星变黄/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/05/var-let-const区别/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -244,18 +265,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/05/bind()与-all()及apply()的区别/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          .bind()与.call()/.applay()的区别
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/11/02/文字超出部分出现省略号/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">文字不换行及省略号</div>
+    <a href="/2018/11/05/深入理解setTimeout()/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">深入理解settimeout()</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -282,7 +294,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">1.</span> <span class="toc-text">作用域:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">2.</span> <span class="toc-text">区别:</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-是否可跨块访问"><span class="toc-number">2.1.</span> <span class="toc-text">1.是否可跨块访问:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-声明时是否要初始化-即赋值"><span class="toc-number">2.2.</span> <span class="toc-text">2.声明时是否要初始化(即赋值):</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-是否可以修改值-重新赋值"><span class="toc-number">2.3.</span> <span class="toc-text">3.是否可以修改值(重新赋值):</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结:</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -296,7 +308,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="半个五角星变黄" data-title="半个五角星变黄" data-url="http://yoursite.com/2018/11/03/半个五角星变黄/"></div>
+	<div class="ds-thread" data-thread-key="var-let-const区别" data-title="var,let,const区别" data-url="http://yoursite.com/2018/11/05/var-let-const区别/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">

@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>半个五角星变黄 | Flmthink</title>
+  <title>深入理解settimeout() | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+  <meta name="description" content="转载自:https://www.jianshu.com/p/3e482748369d?from=groupmessage 首先我们还是来看那道大家再熟悉不过的前端面试题： 12345for (var i = 1;i &amp;lt;= 5;i ++) &amp;#123;  setTimeout(function timer() &amp;#123;      console.log(i)  &amp;#125;,i * 100">
+<meta name="keywords" content="setTimeout()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="半个五角星变黄">
-<meta property="og:url" content="http://yoursite.com/2018/11/03/半个五角星变黄/index.html">
+<meta property="og:title" content="深入理解settimeout()">
+<meta property="og:url" content="http://yoursite.com/2018/11/05/深入理解setTimeout()/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+<meta property="og:description" content="转载自:https://www.jianshu.com/p/3e482748369d?from=groupmessage 首先我们还是来看那道大家再熟悉不过的前端面试题： 12345for (var i = 1;i &amp;lt;= 5;i ++) &amp;#123;  setTimeout(function timer() &amp;#123;      console.log(i)  &amp;#125;,i * 100">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T09:18:00.100Z">
+<meta property="og:updated_time" content="2018-11-05T07:50:46.706Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="半个五角星变黄">
-<meta name="twitter:description" content="各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法: 1&amp;lt;span class=&quot;star&quot;&amp;gt;★★★★★&amp;lt;span&amp;gt; 12345678910111213.star&amp;#123;    color: #ccc;   //底层灰色字体    position: relative;  //子绝父相&amp;#125;.star::after&amp;#123;">
+<meta name="twitter:title" content="深入理解settimeout()">
+<meta name="twitter:description" content="转载自:https://www.jianshu.com/p/3e482748369d?from=groupmessage 首先我们还是来看那道大家再熟悉不过的前端面试题： 12345for (var i = 1;i &amp;lt;= 5;i ++) &amp;#123;  setTimeout(function timer() &amp;#123;      console.log(i)  &amp;#125;,i * 100">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -148,31 +149,68 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-半个五角星变黄" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-深入理解setTimeout()" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      半个五角星变黄
+      深入理解settimeout()
     </h1>
   
 
         
-        <a href="/2018/11/03/半个五角星变黄/" class="archive-article-date">
-  	<time datetime="2018-11-02T16:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
+        <a href="/2018/11/05/深入理解setTimeout()/" class="archive-article-date">
+  	<time datetime="2018-11-05T07:43:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"star"</span>&gt;</span>★★★★★<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.star</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;   <span class="comment">//底层灰色字体</span></span><br><span class="line">    <span class="attribute">position</span>: relative;  <span class="comment">//子绝父相</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span>::after&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"★★★★★"</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;  <span class="comment">//设置字体颜色,橙色</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;  <span class="comment">//通过设置伪元素绝对定位,实现两排★★★★★重叠</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">//设置百分比宽度,如若80%,那就是四颗黄色的星星,故可以通过js获取具体评分,计算得到具体百分比,然后动态的设置width</span></span><br><span class="line">    <span class="attribute">overflow</span>: hidden;  <span class="comment">//将超出部分隐藏,于是就显露除了下面灰色星星</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>无非就是障眼法,两层星星叠在一起,<br>前面的设置overflow:hidden超出隐藏,通过设置width:n%,实现隐藏的长短,漏出底层的灰色星星;</p>
-
+        <p>转载自:<a href="https://www.jianshu.com/p/3e482748369d?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/3e482748369d?from=groupmessage</a></p>
+<p>首先我们还是来看那道大家再熟悉不过的前端面试题：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1;i &lt;= 5;i ++) &#123;</span><br><span class="line">  setTimeout(function timer() &#123;</span><br><span class="line">      console.log(i)</span><br><span class="line">  &#125;,i * 1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>我想刚入门的童鞋或者对<strong>JS作用域</strong>、<strong>闭包</strong>以及<strong>事件循环</strong>等概念不了解的童鞋会想当然的认为这道题的答案应该是：<br>第一次循环，隔一秒输出1；<br>第二次循环，隔两秒输出2；<br>第三次循环，隔三秒输出3；<br>第四次循环，隔四秒输出4；<br>第五次循环，隔五秒输出5；<br>或者还有同学预期的结果是分别输出数字1~5，每秒一次，每次一个。</p>
+<p>但实际结果大家去控制台打印了都知道：以一秒的频率连续输出五个6！<br>相信对于很多童鞋第一次看到这个结果是懵的，包括我第一次看到结果是懵逼的！</p>
+<p>然而还没等你反应过来，面试官又要求你改动一下代码，要它以一秒的频率分别输出1，2，3，4，5。如果你不了解或者没有深入理解JS中的作用域、闭包以及事件循环，那么就可以和面试官说拜拜了。</p>
+<p>这道题涉及到的知识点我上面已经提到过两次，这里我们还是先简单地过一下这些知识点：<br>1、<strong>作用域</strong>：这里我引用《你不知道的javascript》中的一个比喻，可以把作用域链想象成一座高楼，第一层代表当前执行作用域，楼的顶层代表全局作用域。我们在查找变量时会先在当前楼层进行查找，如果没有找到，就会坐电梯前往上一层楼，如果还是没有找到就继续向上找，以此类推。到达顶层后（全局作用域），可能找到了你所需的变量，也可能没找到，但无论如何查找过程都将停止。<br>2、<strong>闭包</strong>：我的理解是在传递函数类型的变量时，该函数会保留定义它的所在函数的作用域。读起来可能比较绕，或者可以简单的这么理解，A函数中定义了B函数并且它返回了B函数，那么不管B函数在哪里被调用或如何被调用，它都会保留A函数的作用域。<br>3、<strong>事件循环</strong>：这个概念深入起来很复杂，下面新开一个段落只说一些跟本文相关的内容。</p>
+<p>说起事件循环，不得不提起<strong>任务队列</strong>。事件循环只有一个，但任务队列可能有多个，任务队列可分为<strong>宏任务（macro-task）</strong>和<strong>微任务（micro-task）</strong>。<strong>XHR回调、事件回调（鼠标键盘事件）、setImmediate、setTimeout、setInterval、indexedDB数据库操作等I/O以及UI rendering</strong>都属于宏任务（也有文章说UI render不属于宏任务，目前还没有定论），<strong>process.nextTick、Promise.then、Object.observer(已经被废弃)、MutationObserver(html5新特性)</strong>属于微任务。注意进入到任务队列的是具体的执行任务的函数。比如上述例子setTimeout()中的timer函数。另外不同类型的任务会分别进入到他们所属类型的任务队列，比如所有setTimeout()的回调都会进入到setTimeout任务队列，所有then()回调都会进入到then队列。当前的整体代码我们可以认为是宏任务。事件循环从当前整体代码开始第一次事件循环，然后再执行队列中所有的微任务，当微任务执行完毕之后，事件循环再找到其中一个宏任务队列并执行其中的所有任务，然后再找到一个微任务队列并执行里面的所有任务，就这样一直循环下去。这就是我所理解的事件循环。来，还是看个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">'global'</span>)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'timeout1'</span>)</span><br><span class="line">   <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'timeout1_promise'</span>)</span><br><span class="line">       resolve()</span><br><span class="line">   &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'timeout1_then'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,<span class="number">2000</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>;i ++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i)</span><br><span class="line">  &#125;,i*<span class="number">1000</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(i)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line">  resolve()</span><br><span class="line"> &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'then1'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'timeout2'</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timeout2_promise'</span>)</span><br><span class="line">    resolve()</span><br><span class="line">  &#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timeout2_then'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;, <span class="number">1000</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'promise2'</span>)</span><br><span class="line">  resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'then2'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>我们来一步一步分析以上代码：</p>
+<p>1）、首先执行整体代码，“global”会被第一个打印出来。这是<strong>第一个输出</strong>.</p>
+<p>2）、执行到第一个setTimeout时，发现它是宏任务，此时会新建一个setTimeout类型的宏任务队列并派发当前这个setTimeout的回调函数到刚建好的这个宏任务队列中去，并且轮到它执行时要延迟2秒后再执行。</p>
+<p>3）、代码继续执行走到for循环，发现是循环5次setTimeout()，那就把这5个setTimeout中的回调函数依次派发到上面新建的setTimeout类型的宏任务队列中去，注意，这5个setTimeout的延迟分别是1到5秒。此时这个setTimeout类型的宏任务队列中应该有6个任务了。再执行for循环里的console.log(i)，很简单，直接输出1,2,3,4,5，这是<strong>第二个输出</strong>。</p>
+<p>4）、再执行到new Promise，Promise构造函数中的第一个参数在new的时候会直接执行，因此不会进入任何队列，所以<strong>第三个输出</strong>是”promise1”，上面有说到Promise.then是微任务，那么这里会生成一个Promise.then类型的微任务队列，这里的then回调会被push进这个队列中。</p>
+<p>5）、再继续走，执行到第二个setTimeout，发现是宏任务，派发它的回调到上面setTimeout类型的宏任务队列中去。</p>
+<p>6）、再走到最后一个new Promise，很明显，这里会有<strong>第四个输出</strong>：”promise2”，然后它的then中的回调也会被派发到上面的Promise.then类型的微任务队列中去。</p>
+<p>7）、第一轮事件循环的宏任务执行完成（整体代码可以看做宏任务）。此时微任务队列中只有一个Promise.then类型微任务队列，它里面有两个任务。宏任务队列中也只有一个setTimeout类型的宏任务队列。</p>
+<p>8）、下面执行第一轮事件循环的微任务，很明显，会分别打印出”then1”，和”then2”。分别是<strong>第五和第六个输出</strong>。此时第一轮事件循环完成。</p>
+<p>9）、开始第二轮事件循环：执行setTimeout类型队列（宏任务队列）中的所有任务。发现都有延时，但延时最短的是for循环中第一次循环push进来的那个setTimeout和上面第5个步骤中的第二个setTimeout，它们都只延时1s。它们会被同时执行，但前者先被push进来，所以先执行它！它的作用就是打印变量i，在当前作用域找变量i，木有！去它上层作用域（这里是全局作用域）找，找到了，但此时的i早已是6了。（为啥不是5，那你得去补补for循环的执行流程了~）所以这里<strong>第七个输出</strong>是<strong>延时1s</strong>后打印出6。</p>
+<p>10）、紧接着执行第二个setTimeout，它会先后打印出”timeout2”和”timeout2_promise”，这分别是<strong>第八和第九个输出</strong>。但这里发现了then，又把它push到上面已经被执行完的then队列中去。</p>
+<p>11）、这里要注意，因为出现了微任务then队列，所以这里会执行该队列中的所有任务（此时只有一个任务），即打印出”timeout2_then”。这是<strong>第十个输出</strong>。</p>
+<p>11）、继续回过头来执行宏任务队列，此时是执行延时为2s的第一个setTimeout和for循环中第二次循环的那个setTimeout，跟上面一样，前者是第一个被push进来的，所以它先执行。这里会<strong>延时1秒</strong>（原因下面会解释）分别输出“timeout1”和“timeout1_promise”，但发现了里面也有一个then，于是push到then微任务队列并立即执行，输出了”timeout1_then”。紧接着执行for中第二次循环的setTimeout，输出6。注意这三个几乎是同时被打印出来的。他们分别是<strong>第十一到十三个输出</strong>。</p>
+<p>12）、再就很简单了，把省下的for循环中后面三次循环被push进来的setTimeout依次执行，于是每隔1s输出一个6，连续输出3次。</p>
+<p>13）、第二轮事件循环结束，全部代码执行完毕。</p>
+<p>所以上代码的执行结果为：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">global</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">promise1</span><br><span class="line">promise2</span><br><span class="line">then1</span><br><span class="line">then2</span><br><span class="line"><span class="comment">//延迟1s</span></span><br><span class="line"><span class="number">6</span></span><br><span class="line">timeout2</span><br><span class="line">timeout2_promise</span><br><span class="line">timeout2_then</span><br><span class="line"><span class="comment">//延迟1s</span></span><br><span class="line">timeout1</span><br><span class="line"><span class="number">17</span> timeout1_promise</span><br><span class="line"><span class="number">20</span> timeout1_then</span><br><span class="line"><span class="number">6</span></span><br><span class="line"><span class="comment">//每隔1s输出3个6</span></span><br></pre></td></tr></table></figure>
+<p>这里解释下为什么上面第11步不是延迟2秒再输出“timeout1”和“timeout1_promise”，这时需要理解setTimeout()延时参数的意思，<strong>这个延迟时间始终是相对主程序执行完毕的那个时间算的 ,并且多个setTimeout执行的先后顺序也是由这个延迟时间决定的。</strong></p>
+<p>再回过头来看上面那个问题，理解了事件循环的机制，问题就很简单了。for循环时setTimeout()不是立即执行的，它们的回调被push到了宏任务队列当中，而在执行任务队列里的回调函数时，变量i早已变成了6。那如何得到想要的结果呢？很简单，原理就是需要给循环中的setTimeout()创建一个<strong>闭包作用域</strong>，让它执行的时候找到的变量i是正确的。</p>
+<p>知道了原理，解决方案就很多了，下面给出5种方案，</p>
+<p>（1）引入IIFE</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i&lt;<span class="number">5</span>;i ++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;, i * <span class="number">1000</span>);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）利用ES 6引入的let关键字</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>;i&lt;<span class="number">5</span>;i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;, i * <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>for 循环头部的let 声明还会有一个特殊的行为。这个行为指出变量在循环过程中不止被声明一次，每次迭代都会声明。随后的每个迭代都会使用上一个迭代结束时的值来初始化这个变量。</p>
+<p>（3）利用ES 5引入的bind函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);</span><br><span class="line">  &#125;.bind(<span class="literal">null</span>,i), i*<span class="number">1000</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（4）利用setTimeout第三个参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i=<span class="number">1</span>; i&lt;=<span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout( <span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params">i</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);    </span><br><span class="line">   &#125;, i*<span class="number">1000</span>,i );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注：setTimeout函数第三个参数及以后的参数都可以作为timer函数的参数。</p>
+<p>（5）把setTimeout用一个方法单独出来形成闭包</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> loop = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span> <span class="title">timer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i);  </span><br><span class="line">  &#125;, i*<span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>;i &lt;= <span class="number">5</span>; i++) &#123;</span><br><span class="line">  loop(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
 
       
@@ -180,6 +218,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">setTimeout()</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -230,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/03/半个五角星变黄/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/05/深入理解setTimeout()/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -244,18 +293,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/11/05/bind()与-all()及apply()的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/11/05/var-let-const区别/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          .bind()与.call()/.applay()的区别
+          var,let,const区别
         
       </div>
     </a>
   
   
-    <a href="/2018/11/02/文字超出部分出现省略号/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">文字不换行及省略号</div>
+    <a href="/2018/11/05/bind()与-all()及apply()的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">.bind()与.call()/.applay()的区别</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -296,7 +345,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="半个五角星变黄" data-title="半个五角星变黄" data-url="http://yoursite.com/2018/11/03/半个五角星变黄/"></div>
+	<div class="ds-thread" data-thread-key="深入理解setTimeout()" data-title="深入理解settimeout()" data-url="http://yoursite.com/2018/11/05/深入理解setTimeout()/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
