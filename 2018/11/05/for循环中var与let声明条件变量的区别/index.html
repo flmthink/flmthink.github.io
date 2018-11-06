@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>for循环中var与let声明条件变量的区别 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它们的回调被push">
+  <meta name="description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它的回调被push到">
 <meta property="og:type" content="article">
 <meta property="og:title" content="for循环中var与let声明条件变量的区别">
 <meta property="og:url" content="http://yoursite.com/2018/11/05/for循环中var与let声明条件变量的区别/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它们的回调被push">
+<meta property="og:description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它的回调被push到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-05T12:15:17.494Z">
+<meta property="og:updated_time" content="2018-11-05T12:36:51.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="for循环中var与let声明条件变量的区别">
-<meta name="twitter:description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它们的回调被push">
+<meta name="twitter:description" content="1.var方式var: 123456for(var i=0;i&amp;lt;=5;i++)&amp;#123;    setTimeout(function()&amp;#123;        console.log(i)    &amp;#125;,0)&amp;#125;//输出  6 6 6 6 6 6 根据前几篇博客的宏任务与微任务的任务执行顺序可知, for循环时setTimeout()不是立即执行的，它的回调被push到">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -52,6 +52,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Flm</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">前端学习者</p>
 		
 
 		<nav class="header-menu">
@@ -106,6 +108,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">Flm</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>前端学习者<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -171,7 +175,8 @@
         <h3 id="1-var方式"><a href="#1-var方式" class="headerlink" title="1.var方式"></a>1.var方式</h3><p>var:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出  6 6 6 6 6 6</span></span><br></pre></td></tr></table></figure>
 <p>根据前几篇博客的<strong>宏任务</strong>与<strong>微任务</strong>的任务执行顺序可知,</p>
-<p>for循环时setTimeout()不是立即执行的，它们的回调被push到了宏任务队列当中，而在执行任务队列里的回调函数时，变量i早已变成了6.</p>
+<p>for循环时setTimeout()不是立即执行的，它的回调被push到了宏任务队列当中，而在执行任务队列里的回调函数时，变量i早已变成了6.</p>
+<a id="more"></a>
 <h3 id="2-let方式"><a href="#2-let方式" class="headerlink" title="2.let方式"></a>2.let方式</h3><p>提示一点:<strong>let声明的变量具有块级作用域的影响</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;=<span class="number">5</span>;i++)&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;,<span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//以此输出 0 1 2 3 4 5</span></span><br></pre></td></tr></table></figure>
 <p>以上代码相当于</p>
@@ -253,6 +258,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/11/06/js实现继承的几种方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js实现继承的几种方式
+        
+      </div>
+    </a>
   
   
     <a href="/2018/11/05/var-let-const区别/" id="article-nav-older" class="article-nav-link-wrap">
@@ -419,6 +433,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -431,7 +449,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存泄露</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -439,7 +477,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">索引</a>
               </li>
              
               <li class="article-tag-list-item">

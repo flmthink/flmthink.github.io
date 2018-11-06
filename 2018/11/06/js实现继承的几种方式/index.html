@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018 | Flmthink</title>
+  <title>js实现继承的几种方式 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="写故事的人在路上">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Flmthink">
-<meta property="og:url" content="http://yoursite.com/archives/2018/index.html">
+  <meta name="description" content="前言:既然要实现继承，那么首先我们得有一个父类，代码如下： 123456789function Animal (name) &amp;#123;  //定义一个动物类  this.name = name || &apos;Animal&apos;; //属性  this.sleep = function()&amp;#123;      //实例方法    console.log(this.name + &apos;正在睡觉！&apos;);  &amp;#1">
+<meta name="keywords" content="js,继承">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js实现继承的几种方式">
+<meta property="og:url" content="http://yoursite.com/2018/11/06/js实现继承的几种方式/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="写故事的人在路上">
+<meta property="og:description" content="前言:既然要实现继承，那么首先我们得有一个父类，代码如下： 123456789function Animal (name) &amp;#123;  //定义一个动物类  this.name = name || &apos;Animal&apos;; //属性  this.sleep = function()&amp;#123;      //实例方法    console.log(this.name + &apos;正在睡觉！&apos;);  &amp;#1">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-06T10:18:26.566Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flmthink">
-<meta name="twitter:description" content="写故事的人在路上">
+<meta name="twitter:title" content="js实现继承的几种方式">
+<meta name="twitter:description" content="前言:既然要实现继承，那么首先我们得有一个父类，代码如下： 123456789function Animal (name) &amp;#123;  //定义一个动物类  this.name = name || &apos;Animal&apos;; //属性  this.sleep = function()&amp;#123;      //实例方法    console.log(this.name + &apos;正在睡觉！&apos;);  &amp;#1">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -151,242 +153,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-js实现继承的几种方式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/07/js内存泄露/" class="archive-article-date">
-  	<time datetime="2018-11-06T21:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/07/js内存泄露/">js内存泄露</a>
+    <h1 class="article-title" itemprop="name">
+      js实现继承的几种方式
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存泄露</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/07/js中内存机制与回收机制/" class="archive-article-date">
-  	<time datetime="2018-11-06T19:00:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/07/js中内存机制与回收机制/">js中内存机制与回收机制</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">内存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/Vue的优缺点/" class="archive-article-date">
-  	<time datetime="2018-11-06T14:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/Vue的优缺点/">Vue的优缺点</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/纯js实现点击列表输出对应索引/" class="archive-article-date">
-  	<time datetime="2018-11-06T13:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/纯js实现点击列表输出对应索引/">纯js实现点击列表输出对应索引</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">索引</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js中闭包的理解/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js中闭包的理解/">js中闭包的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js实现继承的几种方式/" class="archive-article-date">
+        
+        <a href="/2018/11/06/js实现继承的几种方式/" class="archive-article-date">
   	<time datetime="2018-11-06T08:55:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js实现继承的几种方式/">js实现继承的几种方式</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>既然要实现继承，那么首先我们得有一个父类，代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params">name</span>) </span>&#123;  <span class="comment">//定义一个动物类</span></span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Animal'</span>; <span class="comment">//属性</span></span><br><span class="line">  <span class="keyword">this</span>.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;      <span class="comment">//实例方法</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在睡觉！'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>) </span>&#123; <span class="comment">//原型方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在吃：'</span> + food);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="方法1-原型链继承"><a href="#方法1-原型链继承" class="headerlink" title="方法1. 原型链继承"></a>方法1. 原型链继承</h2><p><strong>核心</strong>:将父类的实例作为子类的原型</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params"></span>)</span>&#123; &#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Cat.prototype.name = <span class="string">'cat'</span>;  <span class="comment">//将属性 this.name=anima也继承了过来,需要手动改一下</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//　Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.eat(<span class="string">'fish'</span>));</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">//true </span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>非常纯粹的继承关系，实例是子类的实例，也是父类的实例</li>
+<li>父类新增原型方法/原型属性，子类都能访问到</li>
+<li>简单，易于实现</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>要想为子类新增原型属性和方法，必须要在<code>new Animal()</code>这样的语句之后执行，不能放到构造器中;构造器中只能增加实例属性和方法</li>
+<li>无法实现多继承(多继承就是将多个对象的成员，交给当前对象)</li>
+<li>来自原型对象的所有属性被所有实例共享（即:修改一个实例的原型属性,则另一个实例的此原型属性也受影响）</li>
+<li>创建子类实例时，无法向父类构造函数传参</li>
+</ol>
+<p>推荐指数：★★（3、4两大致命缺陷）</p>
+<h2 id="方法2-构造继承"><a href="#方法2-构造继承" class="headerlink" title="方法2. 构造继承"></a>方法2. 构造继承</h2><p><strong>核心:</strong> 使用父类的构造函数来增强子类实例,等于是复制父类的实例属性给子类(没有用到原型)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>解决了1中，子类实例共享父类引用属性的问题</li>
+<li>创建子类实例时，可以向父类传递参数</li>
+<li>可以实现多继承（call多个父类对象）</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>实例并不是父类的实例，只是子类的实例</li>
+<li>只能继承父类的实例属性和方法，不能继承原型属性/方法</li>
+<li>无法实现函数复用，每个子类都有父类实例函数的副本，影响性能</li>
+</ol>
+<p>推荐指数：★★（缺点3）</p>
+<h2 id="方法3-实例继承"><a href="#方法3-实例继承" class="headerlink" title="方法3. 实例继承"></a>方法3. 实例继承</h2><p><strong>核心：</strong>为父类实例添加新特性，作为子类实例返回</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="keyword">new</span> Animal();</span><br><span class="line">  instance.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">  <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>不限制调用方式，不管是<code>new 子类()</code>还是<code>子类()</code>,返回的对象具有相同的效果</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>实例是父类的实例，不是子类的实例</li>
+<li>不支持多继承</li>
+</ol>
+<p>推荐指数：★★</p>
+<h2 id="方法4-拷贝继承"><a href="#方法4-拷贝继承" class="headerlink" title="方法4. 拷贝继承"></a>方法4. 拷贝继承</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> animal = <span class="keyword">new</span> Animal();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> animal)&#123;</span><br><span class="line">    Cat.prototype[p] = animal[p];</span><br><span class="line">  &#125;</span><br><span class="line">  Cat.prototype.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// false</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>支持多继承</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>效率较低，内存占用高（因为要拷贝父类的属性）</li>
+<li>无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到的）</li>
+</ol>
+<p>推荐指数：★（缺点1）</p>
+<h2 id="方法5-组合继承"><a href="#方法5-组合继承" class="headerlink" title="方法5. 组合继承"></a>方法5. 组合继承</h2><p><strong>核心:</strong>通过调用父类构造,继承父类的属性并保留传参的优点,然后通过将父类实例作为子类原型,实现函数复用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);  <span class="comment">//首先使用构造继承,继承实例属性及方法</span></span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal(); <span class="comment">//然后就采用原型继承,继承原型属性及方法</span></span><br><span class="line">Cat.prototype.constructor = Cat; <span class="comment">//组合继承也是需要修复构造函数指向的。</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法</li>
+<li>既是子类的实例，也是父类的实例</li>
+<li>不存在引用属性共享问题</li>
+<li>可传参</li>
+<li>函数可复用(可多次调用,创建不同的实例)</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>调用了两次父类构造函数(new Animal())，生成了两份实例（创建子类实例时,会将子类原型上的那份屏蔽了）</li>
+</ol>
+<p>推荐指数：★★★★（仅仅多消耗了一点内存）</p>
+<h2 id="方法6-寄生组合继承"><a href="#方法6-寄生组合继承" class="headerlink" title="方法6. 寄生组合继承"></a>方法6. 寄生组合继承</h2><p><strong>核心：</strong>通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="keyword">this</span>);</span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Tom'</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;; <span class="comment">//创建一个没有实例方法的类</span></span><br><span class="line">  Super.prototype = Animal.prototype;<span class="comment">//将Animal原型方法继承给它</span></span><br><span class="line">  Cat.prototype = <span class="keyword">new</span> Super(); <span class="comment">//将此实例作为子类的原型(因为此实例没有实例属性和实例方法,所以继承的仅是原型属性和方法,避免了二此初始化Animal实例)</span></span><br><span class="line">&#125;)();</span><br><span class="line">Cat.prototype.constructor = Cat; <span class="comment">// 需要修复下构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Test Code</span></span><br><span class="line"><span class="keyword">var</span> cat = <span class="keyword">new</span> Cat();</span><br><span class="line"><span class="built_in">console</span>.log(cat.name);</span><br><span class="line"><span class="built_in">console</span>.log(cat.sleep());</span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Animal); <span class="comment">// true</span></span><br><span class="line"><span class="built_in">console</span>.log(cat <span class="keyword">instanceof</span> Cat); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ol>
+<li>堪称完美</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>实现较为复杂</li>
+</ol>
+<p>推荐指数：★★★★（实现复杂，扣掉一颗星）</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -402,171 +279,147 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/06/js实现继承的几种方式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/for循环中var与let声明条件变量的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T10:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/11/06/js中闭包的理解/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          js中闭包的理解
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/05/for循环中var与let声明条件变量的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">for循环中var与let声明条件变量的区别</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/for循环中var与let声明条件变量的区别/">for循环中var与let声明条件变量的区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言:</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1-原型链继承"><span class="toc-number">2.</span> <span class="toc-text">方法1. 原型链继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2-构造继承"><span class="toc-number">3.</span> <span class="toc-text">方法2. 构造继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法3-实例继承"><span class="toc-number">4.</span> <span class="toc-text">方法3. 实例继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法4-拷贝继承"><span class="toc-number">5.</span> <span class="toc-text">方法4. 拷贝继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法5-组合继承"><span class="toc-number">6.</span> <span class="toc-text">方法5. 组合继承</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法6-寄生组合继承"><span class="toc-number">7.</span> <span class="toc-text">方法6. 寄生组合继承</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/var-let-const区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T08:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="js实现继承的几种方式" data-title="js实现继承的几种方式" data-url="http://yoursite.com/2018/11/06/js实现继承的几种方式/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/var-let-const区别/">var,let,const区别</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">var/let/const</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/深入理解setTimeout()/" class="archive-article-date">
-  	<time datetime="2018-11-05T07:43:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/深入理解setTimeout()/">深入理解settimeout()</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">setTimeout()</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/bind()与-all()及apply()的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T06:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/bind()与-all()及apply()的区别/">.bind()与.call()/.applay()的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">bind()</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">call()</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">apply()</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2018/page/2/">2</a><a class="extend next" rel="next" href="/archives/2018/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -590,8 +443,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
