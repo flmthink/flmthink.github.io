@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js内存泄露 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型2.1意外的全局变量引起的内存泄漏12345function">
+  <meta name="description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
 <meta name="keywords" content="js,内存泄露">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js内存泄露">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/js内存泄露/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型2.1意外的全局变量引起的内存泄漏12345function">
+<meta property="og:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-06T21:30:39.630Z">
+<meta property="og:updated_time" content="2018-11-06T21:40:12.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js内存泄露">
-<meta name="twitter:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型2.1意外的全局变量引起的内存泄漏12345function">
+<meta name="twitter:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -176,7 +176,8 @@
         <h2 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h2><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
 <p>不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。</p>
-<h2 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h2><h3 id="2-1意外的全局变量引起的内存泄漏"><a href="#2-1意外的全局变量引起的内存泄漏" class="headerlink" title="2.1意外的全局变量引起的内存泄漏"></a>2.1意外的全局变量引起的内存泄漏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=&#123;&#125;    <span class="comment">//未声明,直接赋值,产生的变量是全局变量</span></span><br><span class="line">			<span class="comment">//等价于 window.a=&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<h2 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h2><a id="more"></a>
+<h3 id="2-1意外的全局变量引起的内存泄漏"><a href="#2-1意外的全局变量引起的内存泄漏" class="headerlink" title="2.1意外的全局变量引起的内存泄漏"></a>2.1意外的全局变量引起的内存泄漏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=&#123;&#125;    <span class="comment">//未声明,直接赋值,产生的变量是全局变量</span></span><br><span class="line">			<span class="comment">//等价于 window.a=&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
 <h3 id="2-2被忘记的-Timers-或者-callbacks"><a href="#2-2被忘记的-Timers-或者-callbacks" class="headerlink" title="2.2被忘记的 Timers 或者 callbacks"></a>2.2被忘记的 Timers 或者 callbacks</h3>
       
 
@@ -429,10 +430,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -445,7 +442,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -454,6 +451,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">

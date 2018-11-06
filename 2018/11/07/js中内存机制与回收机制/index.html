@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>js中内存机制与回收机制 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中; 1.2 栈与基本数据类型 基本数据类型包括: String Number Boolean Null Undefined Symbol 闭包除外,因为闭包依赖的变量,不管是基本还是引用类型,都是由外层函数包裹,作为Function数据类">
+  <meta name="description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中;">
 <meta name="keywords" content="js,内存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js中内存机制与回收机制">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/js中内存机制与回收机制/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中; 1.2 栈与基本数据类型 基本数据类型包括: String Number Boolean Null Undefined Symbol 闭包除外,因为闭包依赖的变量,不管是基本还是引用类型,都是由外层函数包裹,作为Function数据类">
+<meta property="og:description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-06T21:18:16.300Z">
+<meta property="og:updated_time" content="2018-11-06T21:39:44.828Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中内存机制与回收机制">
-<meta name="twitter:description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中; 1.2 栈与基本数据类型 基本数据类型包括: String Number Boolean Null Undefined Symbol 闭包除外,因为闭包依赖的变量,不管是基本还是引用类型,都是由外层函数包裹,作为Function数据类">
+<meta name="twitter:description" content="1.内存机制1.1内存模型:js内存空间分为栈(stack),堆(heap),池;其中: 栈存放基本数据类型; 堆存放引用数据类型; 池存放常量,一般池也归属栈中;">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -177,6 +177,7 @@
 <p><strong>栈</strong>存放基本数据类型;</p>
 <p><strong>堆</strong>存放引用数据类型;</p>
 <p><strong>池</strong>存放常量,一般池也归属<strong>栈</strong>中;</p>
+<a id="more"></a>
 <h3 id="1-2-栈与基本数据类型"><a href="#1-2-栈与基本数据类型" class="headerlink" title="1.2 栈与基本数据类型"></a>1.2 栈与基本数据类型</h3><ol>
 <li>基本数据类型包括: String Number Boolean Null Undefined Symbol</li>
 <li>闭包除外,因为闭包依赖的变量,不管是基本还是引用类型,都是由外层函数包裹,作为Function数据类型存储于<strong>堆</strong>的;</li>
@@ -477,10 +478,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -493,7 +490,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -502,6 +499,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -176,8 +176,10 @@
         <h2 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h2><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
 <p>不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。</p>
-<h2 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h2><h3 id="2-1意外的全局变量引起的内存泄漏"><a href="#2-1意外的全局变量引起的内存泄漏" class="headerlink" title="2.1意外的全局变量引起的内存泄漏"></a>2.1意外的全局变量引起的内存泄漏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=&#123;&#125;    <span class="comment">//未声明,直接赋值,产生的变量是全局变量</span></span><br><span class="line">			<span class="comment">//等价于 window.a=&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
-<h3 id="2-2被忘记的-Timers-或者-callbacks"><a href="#2-2被忘记的-Timers-或者-callbacks" class="headerlink" title="2.2被忘记的 Timers 或者 callbacks"></a>2.2被忘记的 Timers 或者 callbacks</h3>
+<h2 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h2>
+        
+          <a class="article-more-a" href="/2018/11/07/js内存泄露/#more">more >></a>
+        
       
 
       
@@ -258,46 +260,9 @@
 <p><strong>栈</strong>存放基本数据类型;</p>
 <p><strong>堆</strong>存放引用数据类型;</p>
 <p><strong>池</strong>存放常量,一般池也归属<strong>栈</strong>中;</p>
-<h3 id="1-2-栈与基本数据类型"><a href="#1-2-栈与基本数据类型" class="headerlink" title="1.2 栈与基本数据类型"></a>1.2 栈与基本数据类型</h3><ol>
-<li>基本数据类型包括: String Number Boolean Null Undefined Symbol</li>
-<li>闭包除外,因为闭包依赖的变量,不管是基本还是引用类型,都是由外层函数包裹,作为Function数据类型存储于<strong>堆</strong>的;</li>
-<li>遵循<strong>后进先出</strong>原则:形象点说,栈只有一个开口,先进去的就到最底下,后进来的就在上面;取的时候,最上面的先取出来;所以说先进后出，后进先出</li>
-</ol>
-<h3 id="1-3-堆与引用数据类型"><a href="#1-3-堆与引用数据类型" class="headerlink" title="1.3 堆与引用数据类型"></a>1.3 堆与引用数据类型</h3><ol>
-<li>引用数据类型包括:Object,Array,Date,RegExp,Function…..(只要不是基本数据类型,都叫做引用数据类型)</li>
-<li>引用数据类型的值是保存在堆内存中的对象。JS不允许直接访问堆内存中的位置，因此在操作对象时，实际上是在操作对象的引用而不是实际的对象。</li>
-<li>因此，引用类型的值都是按引用访问的。这里的引用，我们可以粗浅地理解为保存在栈内存中的一个地址(或者叫指针)，该地址与堆内存的实际值相关联。</li>
-</ol>
-<h2 id="2-垃圾回收机制"><a href="#2-垃圾回收机制" class="headerlink" title="2. 垃圾回收机制"></a>2. 垃圾回收机制</h2><p>js有自动垃圾回收机制,就是找出那些不再继续使用的值,然后释放其占有的内存;垃圾收集器每隔固定的时间就执行一次释放操作;</p>
-<p>有两种垃圾回收算法:</p>
-<h3 id="2-1-标记清除算法——"><a href="#2-1-标记清除算法——" class="headerlink" title="2.1 标记清除算法——"></a>2.1 标记清除算法——</h3><h4 id="2-1-1工作原理"><a href="#2-1-1工作原理" class="headerlink" title="2.1.1工作原理:"></a>2.1.1工作原理:</h4><p>是当变量进入环境时，将这个变量标记为“进入环境”。从逻辑上讲，永远不能释放进入环境的变量所占用的内存，因为只要执行流进入相应的环境，就可能会用到它们。当变量离开环境时，则将其标记为“离开环境”。标记“离开环境”的就回收内存。</p>
-<ol>
-<li>垃圾收集器在运行的时候会给存储在内存中的所有变量都加上<strong>进入环境</strong>标记。</li>
-<li>然后，它会去掉环境中的变量以及被环境中的变量引用(闭包)的标记。</li>
-<li>而在此之后(即变量离开环境时),再被加上<strong>离开环境</strong>标记的变量将被视为准备删除的变量，原因是环境中的变量已经无法访问到这些变量了。</li>
-<li>最后。垃圾收集器完成内存清除工作，销毁那些带标记的值，并回收他们所占用的内存空间。</li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>) <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a=<span class="number">10</span>;  <span class="comment">//下面执行foo函数使,被标记,进入环境</span></span><br><span class="line">    <span class="keyword">var</span> b=<span class="number">20</span>;  <span class="comment">//同样,进入环境</span></span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line">				<span class="comment">//然后,过程中,取消了a,b的进入标记</span></span><br><span class="line"></span><br><span class="line">foo();  <span class="comment">//当执行完毕后,a,b被又被标记,离开环境,被回收</span></span><br></pre></td></tr></table></figure>
-<h4 id="2-1-2我的理解"><a href="#2-1-2我的理解" class="headerlink" title="2.1.2我的理解:"></a>2.1.2我的理解:</h4><ol>
-<li>一开始都有进入环境标记;</li>
-<li>然后依赖到的变量都会被取消进入环境的标记;</li>
-<li>当离开时,从这几个没有标记的里面<strong>找出不再继续使用的值</strong>;并添加上离开环境标记;(那些被标有进入环境的,没有取消标记,这里也就不会从那些中找)</li>
-<li>被标有离开环境标记的变量将会被回收;</li>
-</ol>
-<h3 id="2-2-引用清除算法——"><a href="#2-2-引用清除算法——" class="headerlink" title="2.2 引用清除算法——"></a>2.2 引用清除算法——</h3><h4 id="2-2-1-工作原理"><a href="#2-2-1-工作原理" class="headerlink" title="2.2.1 工作原理:"></a>2.2.1 工作原理:</h4><p>引用计数的含义是跟踪记录每个值被引用的次数。如若最后引用的次数为0,则将这个值回收释放内存;</p>
-<ol>
-<li>当声明了一个变量并将一个引用类型值赋给该变量时，则这个值的引用次数就是1。</li>
-<li>如果同一个值又被赋给另一个变量，则该值的引用次数加1。</li>
-<li>相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数减1。</li>
-<li>当这个值的引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其占用的内存空间回收回来。这样，当垃圾回收器下次再运行时，它就会释放那些引用次数为0的值所占用的内存。</li>
-</ol>
-<h4 id="2-2-2我的理解"><a href="#2-2-2我的理解" class="headerlink" title="2.2.2我的理解:"></a>2.2.2我的理解:</h4><p>引用清除算法中<strong>不再继续使用</strong>的标准很简单:就是看一个值是否还有引用它的,如果没有引用它的,就说明这个值不需要了;</p>
-<h4 id="2-2-3致命缺陷"><a href="#2-2-3致命缺陷" class="headerlink" title="2.2.3致命缺陷:"></a>2.2.3致命缺陷:</h4><p>循环引用。如果两个对象相互引用，尽管他们已不再使用，垃圾回收器不会进行回收，导致内存泄露。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> o1 = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</span><br><span class="line">    <span class="keyword">var</span> o2 = &#123;<span class="attr">b</span>:<span class="number">1</span>&#125;;</span><br><span class="line">    o1.prop = o2;</span><br><span class="line">    o2.prop = o1;   <span class="comment">//此处相互引用</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">"Cycle reference!"</span></span><br><span class="line">&#125;</span><br><span class="line">foo();  <span class="comment">//即使函数执行完毕,o1 与 o2 已经不再需要,但是根据引用清除算法,&#123;a:1&#125;与&#123;b:1&#125;都被引用了两次,因此不会被释放;这就导致了内存泄露</span></span><br></pre></td></tr></table></figure>
-<p>大多数浏览器使用的是上面的标记清除,也就不存在该问题了,</p>
-<p>但,IE老祖宗使用的是这个回收算法 -_-!</p>
-<h2 id="3-循环引用不再是问题"><a href="#3-循环引用不再是问题" class="headerlink" title="3.循环引用不再是问题"></a>3.循环引用不再是问题</h2><p>在上面的例子中，在函数调用后，两个对象不再被从全局对象可访问的东西所引用。因此，垃圾回收器将发现它们是不可达的。尽管两个对象还是存在引用，但是他们从 root(window) 出发已经是不可达的了。就会被回收释放了</p>
-
+        
+          <a class="article-more-a" href="/2018/11/07/js中内存机制与回收机制/#more">more >></a>
+        
       
 
       
@@ -459,14 +424,9 @@
       
         <h2 id="首先HTML"><a href="#首先HTML" class="headerlink" title="首先HTML:"></a>首先HTML:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span>	</span><br><span class="line">	  -----</span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一:"></a>方法一:</h2><p><strong>核心:循环,块级作用域</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>),</span><br><span class="line">	liLIst=<span class="built_in">document</span>.querySelectoAll(<span class="string">'ul li'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;liList.length;i++)&#123;   <span class="comment">//必须使用let</span></span><br><span class="line">    liList[i].onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h2><p><strong>核心:循环,自执行匿名函数,闭包</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>),</span><br><span class="line">	liLIst=<span class="built_in">document</span>.querySelectorAll(<span class="string">'ul li'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;liList.length;i++)&#123;</span><br><span class="line">    (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    	liList[i].onclick=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        	<span class="built_in">console</span>.log(i)</span><br><span class="line">		&#125;</span><br><span class="line">    &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="方法三"><a href="#方法三" class="headerlink" title="方法三:"></a>方法三:</h2><p><strong>核心:事件委托</strong>,循环</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>),</span><br><span class="line">	liLIst=<span class="built_in">document</span>.querySelectoAll(<span class="string">'ul li'</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target=e.target;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;liList.length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(list[i]===target)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(i)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,<span class="literal">false</span>)  <span class="comment">//false可不写,默认值就是false</span></span><br></pre></td></tr></table></figure>
-<h2 id="方法四"><a href="#方法四" class="headerlink" title="方法四:"></a>方法四:</h2><p><strong>核心:事件委托,伪数组调用数组方法</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>),</span><br><span class="line">	liLIst=<span class="built_in">document</span>.querySelectoAll(<span class="string">'ul li'</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target=e.target;</span><br><span class="line">    <span class="keyword">if</span>(target.nodeName.toLowerCase()===<span class="string">'li'</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log([].indexOf.call(liList,target)) <span class="comment">//使用call调用数组的indexOf方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;,<span class="literal">false</span>)  <span class="comment">//false可不写,默认值就是false</span></span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2018/11/06/纯js实现点击列表输出对应索引/#more">more >></a>
+        
       
 
       
@@ -549,33 +509,9 @@
 <li><strong>内部函数引用外部函数里定义的变量;</strong></li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">        alert(x + y + (++tmp));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = foo(<span class="number">2</span>); <span class="comment">// bar 现在是一个闭包</span></span><br><span class="line">bar(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-<h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑:"></a>疑惑:</h3><p>​    很多博客写到,闭包还有第三要素,就是外层函数必须return 内部函数;下面的一个例子就可以很好的反驳:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    a[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">5</span>]();  <span class="comment">// 输出 10</span></span><br><span class="line"><span class="comment">//当调用 a[5] () 时,因为i时全局变量,经过循环,早已成了10;</span></span><br></pre></td></tr></table></figure>
-<p><strong>要求:使 a[5] ()输出值为 5</strong></p>
-<p>因为 var 没有块的概念,导致 i 成了全局变量; ES6 用 let 代替 var ,每次循环生成一个块,每个块里声明了同名但不同值的 i 变量不会互相影响,也就实现了目的</p>
-<p>还有另外一种方法:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">          (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;  <span class="comment">//此处的i仅为形参,j k 亦可</span></span><br><span class="line">              a[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                  <span class="built_in">console</span>.log(i);</span><br><span class="line">              &#125;;</span><br><span class="line">          &#125;)(i)</span><br><span class="line">      &#125;</span><br><span class="line">      a[<span class="number">5</span>](); <span class="comment">//输出5</span></span><br></pre></td></tr></table></figure>
-<p>这里,使用匿名函数自调用的方式,匿名函数 将变量 i 存储于匿名函数内部;内部函数( a[5] () )调用时,访问的便是这个被存储下来的值;</p>
-<p>这里,一有内外层函数嵌套,二有内部函数调用外部函数的变量;完全符合闭包的概念,故内部函数就是一个闭包;</p>
-<p>以上代码里,并未有return,而且也是闭包;所以我认为,return内部函数不是必须的,对于闭包的定义中也并未提到return;</p>
-<h2 id="2-特点"><a href="#2-特点" class="headerlink" title="2. 特点:"></a>2. 特点:</h2><ol>
-<li>变量定义在外层函数中,加强了变量的安全性及代码封装性,避免了污染全局变量;</li>
-<li>外层函数内定义的变量,因为内层函数的执行依赖外层的变量,这些变量会常驻在内存中(全局变量也是一直在内存中);但用的多了会占内存太多,成了缺点了;</li>
-</ol>
-<h2 id="3-解决闭包浪费内存的办法"><a href="#3-解决闭包浪费内存的办法" class="headerlink" title="3. 解决闭包浪费内存的办法:"></a>3. 解决闭包浪费内存的办法:</h2><h3 id="3-1-要领"><a href="#3-1-要领" class="headerlink" title="3.1 要领:"></a>3.1 要领:</h3><ol>
-<li>javascript高级程序设计中说局部变量会在函数执行完毕后就进行释放，而全局变量会一直在内存中直到浏览器关闭;</li>
-<li>闭包的出现,导致使用闭包的外部函数内的变量也会一直在内存中;</li>
-<li>闭包中用到的<strong>变量的生命明周期</strong>其实是跟着调用这个函数的上一层函数的生命周期的;</li>
-</ol>
-<h3 id="3-2-方法-使用IIFE-自执行函数"><a href="#3-2-方法-使用IIFE-自执行函数" class="headerlink" title="3.2 方法:使用IIFE(自执行函数)"></a>3.2 方法:使用IIFE(自执行函数)</h3><p>由上面第三点得知:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> foo=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            a+=<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
-<p>只需在外层使用IIFE(自执行函数),例子中 外部函数foo的变量 a 的上一层函数便是这个自执行函数,此自执行函数执行后便其生命周期也就结束了,a具有相同的生命周期,也就在匿名函数执行完后释放了;</p>
-<h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结:"></a>4. 总结:</h2><ol>
-<li>闭包在实际项目中应用说白了就是一个函数中要频繁操作一些变量，但这个变量在函数中定义在函数每次运行的时候都要重新声明分配内存空间一来麻烦二来感觉消耗内存,但设置成全局变量又会污染全局变量，在js性能优化中提到尽量不要污染全局变量，自然外面套成函数的方式就出来了,也就是闭包咯;</li>
-<li>但又要保证内部函数的运行灵活性不能限制在外层闭包的作用域，return这个函数的方式就出来了，</li>
-<li>外层函数不想用变量存储而且还要单独运行一次，那么匿名自执行的的方式出来了</li>
-</ol>
-
+        
+          <a class="article-more-a" href="/2018/11/06/js中闭包的理解/#more">more >></a>
+        
       
 
       
@@ -1122,10 +1058,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -1138,7 +1070,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,6 +1079,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">

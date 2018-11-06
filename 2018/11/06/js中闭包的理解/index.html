@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="在高级程序设计中对闭包定义：”闭包是指有权限访问另一个函数作用域中的变量的函数。” 1. 大体总结为一下两点: 函数内嵌套函数; 内部函数引用外部函数里定义的变量;  12345678function foo(x) &amp;#123;    var tmp = 3;    return function (y) &amp;#123;        alert(x + y + (++tmp));    &amp;#125">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-06T12:48:41.043Z">
+<meta property="og:updated_time" content="2018-11-06T21:36:55.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js中闭包的理解">
 <meta name="twitter:description" content="在高级程序设计中对闭包定义：”闭包是指有权限访问另一个函数作用域中的变量的函数。” 1. 大体总结为一下两点: 函数内嵌套函数; 内部函数引用外部函数里定义的变量;  12345678function foo(x) &amp;#123;    var tmp = 3;    return function (y) &amp;#123;        alert(x + y + (++tmp));    &amp;#125">
@@ -179,6 +179,7 @@
 <li><strong>内部函数引用外部函数里定义的变量;</strong></li>
 </ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">        alert(x + y + (++tmp));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = foo(<span class="number">2</span>); <span class="comment">// bar 现在是一个闭包</span></span><br><span class="line">bar(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="疑惑"><a href="#疑惑" class="headerlink" title="疑惑:"></a>疑惑:</h3><p>​    很多博客写到,闭包还有第三要素,就是外层函数必须return 内部函数;下面的一个例子就可以很好的反驳:</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[]</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;<span class="number">10</span>;i++)&#123;</span><br><span class="line">    a[i]=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(i)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">a[<span class="number">5</span>]();  <span class="comment">// 输出 10</span></span><br><span class="line"><span class="comment">//当调用 a[5] () 时,因为i时全局变量,经过循环,早已成了10;</span></span><br></pre></td></tr></table></figure>
 <p><strong>要求:使 a[5] ()输出值为 5</strong></p>
@@ -466,10 +467,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -482,7 +479,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -491,6 +488,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
