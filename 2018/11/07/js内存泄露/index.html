@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-06T21:40:12.037Z">
+<meta property="og:updated_time" content="2018-11-08T02:59:22.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js内存泄露">
 <meta name="twitter:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
@@ -54,7 +54,7 @@
 		  <h1 class="header-author"><a href="/">Flm</a></h1>
 		</hgroup>
 		
-		<p class="header-subtitle">前端学习者</p>
+		<p class="header-subtitle">写故事的人在路上</p>
 		
 
 		<nav class="header-menu">
@@ -110,7 +110,7 @@
 			  <h1 class="header-author js-header-author">Flm</h1>
 			</hgroup>
 			
-			<p class="header-subtitle"><i class="icon icon-quo-left"></i>前端学习者<i class="icon icon-quo-right"></i></p>
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>写故事的人在路上<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -173,12 +173,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h2><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
+        <h3 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h3><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
 <p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
 <p>不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。</p>
-<h2 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h2><a id="more"></a>
-<h3 id="2-1意外的全局变量引起的内存泄漏"><a href="#2-1意外的全局变量引起的内存泄漏" class="headerlink" title="2.1意外的全局变量引起的内存泄漏"></a>2.1意外的全局变量引起的内存泄漏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=&#123;&#125;    <span class="comment">//未声明,直接赋值,产生的变量是全局变量</span></span><br><span class="line">			<span class="comment">//等价于 window.a=&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
-<h3 id="2-2被忘记的-Timers-或者-callbacks"><a href="#2-2被忘记的-Timers-或者-callbacks" class="headerlink" title="2.2被忘记的 Timers 或者 callbacks"></a>2.2被忘记的 Timers 或者 callbacks</h3>
+<h3 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h3><a id="more"></a>
+<h4 id="2-1意外的全局变量引起的内存泄漏"><a href="#2-1意外的全局变量引起的内存泄漏" class="headerlink" title="2.1意外的全局变量引起的内存泄漏"></a>2.1意外的全局变量引起的内存泄漏</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a=&#123;&#125;    <span class="comment">//未声明,直接赋值,产生的变量是全局变量</span></span><br><span class="line">			<span class="comment">//等价于 window.a=&#123;&#125;</span></span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure>
+<h4 id="2-2被忘记的-Timers-定时器-或callbacks（回调）"><a href="#2-2被忘记的-Timers-定时器-或callbacks（回调）" class="headerlink" title="2.2被忘记的 Timers(定时器) 或callbacks（回调）"></a>2.2被忘记的 Timers(定时器) 或callbacks（回调）</h4><p>在JavaScript中<code>setInterval</code>的使用相当常见。其他库提供观察者和其他工具以回调。这些库中大多数，在引用的实例变成不可访问之后，负责让回调的任何引用也不可访问。在<code>setInterval</code>的情况下，这样的代码很常见：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someResource = getData();</span><br><span class="line">setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> node = <span class="built_in">document</span>.getElementById(<span class="string">'Node'</span>);</span><br><span class="line"><span class="keyword">if</span>(node) &#123;</span><br><span class="line"><span class="comment">// Do stuff with node and someResource.</span></span><br><span class="line">node.innerHTML = <span class="built_in">JSON</span>.stringify(someResource));</span><br><span class="line">&#125;</span><br><span class="line">&#125;, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>这个例子表明了跳动的计时器可能发生什么：计时器使得节点或数据的引用不再被需要了。代表<code>node</code>的对象将来可能被移除，使得整个块在间隔中的处理不必要。然而，处理函数，由于间隔仍然是活跃的，不能被回收（间隔需要被停掉才能回收）。如果间隔处理不能被回收，它的依赖也不能被回收。那意味着可能存储着大量数据的<code>someResource</code>，也不能被回收。<br>观察者情况下，一旦不被需要（或相关的对象快要访问不到）就创建明确移除他们的函数很重要。在过去，这由于特定浏览器（IE6）不能很好的管理循环引用（下面有更多相关信息），曾经尤为重要。现如今，一旦观察对象变成不可访问的，即使收听者没有明确的被移除，多数浏览器可以并会回收观察者处理函数。然而，它保持了在对象被处理前明确的移除这些观察者的好实践。例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">element.innerHtml = <span class="string">'text'</span>;</span><br><span class="line">&#125;</span><br><span class="line">element.addEventListener(<span class="string">'click'</span>, onClick);</span><br><span class="line"><span class="comment">// Do stuff</span></span><br><span class="line">element.removeEventListener(<span class="string">'click'</span>, onClick);</span><br><span class="line">element.parentNode.removeChild(element);</span><br><span class="line"><span class="comment">// Now when element goes out of scope,</span></span><br><span class="line"><span class="comment">// both element and onClick will be collected even in old browsers that don't</span></span><br><span class="line"><span class="comment">// handle cycles well.</span></span><br></pre></td></tr></table></figure>
+<p>一条关于对象观察者及循环引用的笔记</p>
+<p>观察者和循环引用曾经是JavaScript开发者的祸患。这是由于IE垃圾回收的一个bug(或者设计决议)出现的情况。IE的老版本不能检测到DOM节点和JavaScript代码间的循环引用。 这是一个通常为观察到的保留引用（如同上面的例子）的观察者的典型。 也就是说，每次在IE中对一个节点添加观察者的时候，会导致泄漏。这是开发者在节点或空引用之前开始明确的移除处理函数的原因。 现在，现代浏览器（包括IE和MS Edge）使用可以剪裁这些循环和正确处理的现代垃圾回收算法。换言之，在使一个节点不可访问前，调用<code>removeEventLister</code>不是严格意义上必须的。</p>
+<p>像Jquery一样的框架和库做了在处置一个节点前（当为其使用特定的API的时候）移除监听者的工作。这被在库内部处理，即使在像老版本IE一样有问题的浏览器里面跑，也会确保没有泄漏产生。</p>
+<h4 id="3-超出DOM引用"><a href="#3-超出DOM引用" class="headerlink" title="3. 超出DOM引用"></a>3. 超出DOM引用</h4><p>有时存储DOM节点到数据结构中可能有用。假设你想要迅速的更新一个表格几行内容。存储每个DOM行节点的引用到一个字典或数组会起作用。当这发生是，两个对于同个DOM元素的引用被留存：一个在DOM树中，另外一个在字典中。如果在将来的某些点你决定要移除这些行，需要让两个引用都不可用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = &#123;</span><br><span class="line">button: <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>),</span><br><span class="line">image: <span class="built_in">document</span>.getElementById(<span class="string">'image'</span>),</span><br><span class="line">text: <span class="built_in">document</span>.getElementById(<span class="string">'text'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doStuff</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">image.src = <span class="string">'http://some.url/image'</span>;</span><br><span class="line">button.click();</span><br><span class="line"><span class="built_in">console</span>.log(text.innerHTML);</span><br><span class="line"><span class="comment">// Much more logic</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeButton</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// The button is a direct child of body.</span></span><br><span class="line"><span class="built_in">document</span>.body.removeChild(<span class="built_in">document</span>.getElementById(<span class="string">'button'</span>));</span><br><span class="line"><span class="comment">// At this point, we still have a reference to #button in the global</span></span><br><span class="line"><span class="comment">// elements dictionary. In other words, the button element is still in</span></span><br><span class="line"><span class="comment">// memory and cannot be collected by the GC.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对此的额外考虑，必须处理DOM树内的内部节点或叶子节点。假设你在JavaScript代码中保留了一个对于特定的表格内节点（一个td标签）的引用。在将来的某个点决定从DOM中移除这个表格，但是保留对于那个节点的引用。直观的，会假设GC会回收除那个节点之外的每个节点。在实践中，这不会发生的：这个单节点是那个表格的子节点，子节点保留对父节点引用。换句话说，来自JavaScript代码的表格元素的引用会引起在内存里存整个表格。当保留DOM元素的引用的时候，仔细考虑下。</p>
+<h4 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h4><p>一个JavaScript开发的关键点是闭包：从父级作用域捕获变量的匿名函数。很多开发者发现，由于JavaScript runtime的实现细节，有以一种微妙的方式泄漏的可能:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> theThing = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> replaceThing = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> originalThing = theThing;</span><br><span class="line"><span class="keyword">var</span> unused = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (originalThing)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"hi"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">theThing = &#123;</span><br><span class="line">longStr: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1000000</span>).join(<span class="string">'*'</span>),</span><br><span class="line">someMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(someMessage);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(replaceThing, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>这个代码片段做了一件事：每次<code>replaceThing</code>被调用的时候，<code>theThing</code>获取到一个包括一个大数组和新闭包(<code>somMethod</code>)的新对象。同时，变量<code>unused</code>保留了一个有<code>originalThing</code>（<code>theThing</code>从之前的对<code>replaceThing</code>的调用）引用的闭包。已经有点疑惑了，哈？重要的是一旦一个作用域被在同个父作用域下的闭包创建，那个作用域是共享的。这种情况下，为闭包<code>somMethod</code>创建的作用域被<code>unused</code>共享了。<code>unused</code>有一个对<code>originalThing</code>的引用。即使<code>unused</code>从来没被用过，<code>someMethod</code>可以通过<code>theTing</code>被使用。由于<code>someMethod</code>和<code>unused</code>共享了闭包作用域，即使<code>unused</code>从来没被用过，它对<code>originalThing</code>的引用迫使它停留在活跃状态（不能回收）。当这个代码片段重复运行的时候，可以看到内存使用稳步的增长。GC运行的时候，这并不会减轻。本质上，一组关联的闭包被创建（同<code>unused</code>变量在表单中的根节点一起），这些闭包作用域中每个带了大数组一个非直接的引用，导致了大型的泄漏。</p>
+
       
 
       
@@ -294,7 +307,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-什么叫内存泄露"><span class="toc-number">1.</span> <span class="toc-text">1.什么叫内存泄露</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-内存泄露的几种常见类型"><span class="toc-number">2.</span> <span class="toc-text">2.内存泄露的几种常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1意外的全局变量引起的内存泄漏"><span class="toc-number">2.1.</span> <span class="toc-text">2.1意外的全局变量引起的内存泄漏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2被忘记的-Timers-或者-callbacks"><span class="toc-number">2.2.</span> <span class="toc-text">2.2被忘记的 Timers 或者 callbacks</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么叫内存泄露"><span class="toc-number">1.</span> <span class="toc-text">1.什么叫内存泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内存泄露的几种常见类型"><span class="toc-number">2.</span> <span class="toc-text">2.内存泄露的几种常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1意外的全局变量引起的内存泄漏"><span class="toc-number">2.1.</span> <span class="toc-text">2.1意外的全局变量引起的内存泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2被忘记的-Timers-定时器-或callbacks（回调）"><span class="toc-number">2.2.</span> <span class="toc-text">2.2被忘记的 Timers(定时器) 或callbacks（回调）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-超出DOM引用"><span class="toc-number">2.3.</span> <span class="toc-text">3. 超出DOM引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-闭包"><span class="toc-number">2.4.</span> <span class="toc-text">4. 闭包</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -430,6 +443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">bind()</a>
               </li>
              
@@ -442,19 +459,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
