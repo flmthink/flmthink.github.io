@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: git | Flmthink</title>
+  <title>事件冒泡 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个执着追求技术的学习者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Flmthink">
-<meta property="og:url" content="http://yoursite.com/tags/git/index.html">
+  <meta name="description" content="什么是事件冒泡?说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数) 所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果 1234567891011&amp;lt;div id=&apos;father&apos;&amp;gt;    &amp;lt;div id=&apos;son&apos;&amp;gt;&amp;lt;/div&amp;gt;&amp;l">
+<meta name="keywords" content="js,事件冒泡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="事件冒泡">
+<meta property="og:url" content="http://yoursite.com/2018/11/09/事件冒泡/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="一个执着追求技术的学习者">
+<meta property="og:description" content="什么是事件冒泡?说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数) 所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果 1234567891011&amp;lt;div id=&apos;father&apos;&amp;gt;    &amp;lt;div id=&apos;son&apos;&amp;gt;&amp;lt;/div&amp;gt;&amp;l">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-09T15:39:32.187Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flmthink">
-<meta name="twitter:description" content="一个执着追求技术的学习者">
+<meta name="twitter:title" content="事件冒泡">
+<meta name="twitter:description" content="什么是事件冒泡?说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数) 所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果 1234567891011&amp;lt;div id=&apos;father&apos;&amp;gt;    &amp;lt;div id=&apos;son&apos;&amp;gt;&amp;lt;/div&amp;gt;&amp;l">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -151,60 +153,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-事件冒泡" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/31/git网络错误问题/" class="archive-article-date">
-  	<time datetime="2018-10-31T06:36:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/31/git网络错误问题/">git网络问题导致无法提交</a>
+    <h1 class="article-title" itemprop="name">
+      事件冒泡
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/11/09/事件冒泡/" class="archive-article-date">
+  	<time datetime="2018-11-09T14:11:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡?"></a>什么是事件冒泡?</h3><p>说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数)</p>
+<p>所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
+<h4 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h4><p>与事件冒泡相对应的还有事件捕获,该怎么理解呢?</p>
+<p>可以这么比喻,警察抓捕躲在大楼某个房间的小偷,总得先从外向内进入,这就叫做捕获;当抓住之后得把他带出来吧,就得从里往外出来,这就叫冒泡;</p>
+<p>运用下面这个函数,更容易理解:</p>
+<h4 id="addEventListener-‘event’-fn-useCapture"><a href="#addEventListener-‘event’-fn-useCapture" class="headerlink" title="addEventListener(‘event’,fn,useCapture)"></a>addEventListener(‘event’,fn,useCapture)</h4><p>这是原生js绑定事件的函数,三个参数:event(事件);fn(事件处理函数);</p>
+<p>useCapture的意思是 是否使用捕获,详细来讲就是,指定event是在冒泡阶段触发还是捕获阶段触发;默认为false冒泡阶段触发;</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充:"></a>补充:</h4><p>事件冒泡是纯dom的关系,与css样式无关(即,子元素即使脱离了文档流,也不影响冒泡),当然了,如果你把父元素z-index设置很高覆盖了子元素,子元素都看不见不能触发了,哪里还谈什么冒泡不冒泡的;</p>
+<h3 id="阻止事件冒泡"><a href="#阻止事件冒泡" class="headerlink" title="阻止事件冒泡"></a>阻止事件冒泡</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">stopBubble</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">    <span class="comment">//如果提供了事件对象，则这是一个非IE浏览器</span></span><br><span class="line">   <span class="keyword">if</span> ( e &amp;&amp; e.stopPropagation )</span><br><span class="line">      <span class="comment">//因此它支持W3C的stopPropagation()方法</span></span><br><span class="line">      e.stopPropagation();</span><br><span class="line">  <span class="keyword">else</span></span><br><span class="line">  <span class="comment">//否则，我们需要使用IE的方式来取消事件冒泡</span></span><br><span class="line">    <span class="built_in">window</span>.event.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>封装这样一个函数之后:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">son.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;  <span class="comment">//将事件对象e传入</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'son'</span>);</span><br><span class="line">    stopBublle(e);  <span class="comment">//在最后调用阻止事件冒泡的函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h3 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h3><p>就是采用事件冒泡的原理:为父元素添加了事件,操作子元素时,会把这个事件触发传递给父元素,父元素上定义了这个事件的事件处理函数,就会被触发;</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>111<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>222<span class="tag">&lt;/<span class="name">li</span>&gt;</span>	</span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>333<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实现点击不同的li输出其innerText</span></span><br><span class="line"><span class="comment">//事件委托的办法</span></span><br><span class="line"><span class="keyword">var</span> ul=<span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(e.target.nodeName.toLowerCase()===<span class="string">'li'</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e.target.innerText)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>优势</strong></p>
+<ol>
+<li>传统办法for循环虽然也可以实现,但是有多少个li就得调用多少次dom对象,100li的话就是100次,性能消耗严重;事件委托就只需调用一次外层的dom对象即可;</li>
+<li>如若动态的再添加了一个li,新添加的li也能有事件,但是采用for循环的就不可以;</li>
+</ol>
+<p>一个优秀的小例子</p>
+<p>现在给一个场景 ul &gt; li &gt; div &gt; p，div占满li，p占满div，还是给ul绑定事件，需要判断点击的是不是li（假设li里面的结构是不固定的），那么e.target就可能是p，也有可能是div，这种情况你会怎么处理呢？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">p</span>&gt;</span>11111111111<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">            22222222</span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span>&gt;</span>3333333333<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4444444<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如上列表，有4个li，里面的内容各不相同，点击li，event对象肯定是当前点击的对象，怎么指定到li上，下面我直接给解决方案：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">var</span> oUl = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>);</span><br><span class="line">oUl.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> target = e.target;</span><br><span class="line">    <span class="keyword">while</span>(target !== oUl )&#123;</span><br><span class="line">        <span class="keyword">if</span>(target.tagName.toLowerCase() == <span class="string">'li'</span>)&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'li click'</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        target = target.parentNode;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p> 核心代码是while循环部分，实际上就是一个递归调用，你也可以写成一个函数，用递归的方法来调用，同时用到冒泡的原理，从里往外冒泡，知道currentTarget为止，当当前的target是li的时候，就可以执行对应的事件了，然后终止循环，恩，没毛病！</p>
+<p><strong>详细的可以看这位网友写的</strong> <a href="https://www.cnblogs.com/liugang-vip/p/5616484.html" target="_blank" rel="noopener">https://www.cnblogs.com/liugang-vip/p/5616484.html</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">事件冒泡</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/09/事件冒泡/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/11/10/睡不着发疯20181110/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          睡不着发疯2018-11-10
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/11/07/js内存泄露/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">js内存泄露</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是事件冒泡"><span class="toc-number">1.</span> <span class="toc-text">什么是事件冒泡?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#事件捕获"><span class="toc-number">1.1.</span> <span class="toc-text">事件捕获</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#addEventListener-‘event’-fn-useCapture"><span class="toc-number">1.2.</span> <span class="toc-text">addEventListener(‘event’,fn,useCapture)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#补充"><span class="toc-number">1.3.</span> <span class="toc-text">补充:</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#阻止事件冒泡"><span class="toc-number">2.</span> <span class="toc-text">阻止事件冒泡</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#事件委托"><span class="toc-number">3.</span> <span class="toc-text">事件委托</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  <div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="事件冒泡" data-title="事件冒泡" data-url="http://yoursite.com/2018/11/09/事件冒泡/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -227,9 +387,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
