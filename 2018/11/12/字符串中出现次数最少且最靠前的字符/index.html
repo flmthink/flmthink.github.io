@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="这个例子是有网友遇到的一个面试体,然而他并没有给出答案,只能自己写写喽 代码123456789101112131415161718function findLeastFrontChar(str)&amp;#123;    const strArr = str.split(&quot;&quot;)  //划分成数组    const sumArr = [];	//定义一个数组,每一个元素的键    strArr.forEac">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-11T22:07:14.949Z">
+<meta property="og:updated_time" content="2018-11-11T22:22:11.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串中出现次数最少且最靠前的字符">
 <meta name="twitter:description" content="这个例子是有网友遇到的一个面试体,然而他并没有给出答案,只能自己写写喽 代码123456789101112131415161718function findLeastFrontChar(str)&amp;#123;    const strArr = str.split(&quot;&quot;)  //划分成数组    const sumArr = [];	//定义一个数组,每一个元素的键    strArr.forEac">
@@ -190,7 +190,7 @@
 </li>
 </ol>
 <h4 id="发现"><a href="#发现" class="headerlink" title="发现"></a>发现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[&#123;<span class="attr">num</span>:<span class="number">1</span>&#125;,&#123;<span class="attr">num</span>:<span class="number">2</span>&#125;]</span><br><span class="line"><span class="keyword">var</span> item=arr.find(<span class="function"><span class="params">x</span>=&gt;</span> x.num==<span class="number">2</span>)</span><br><span class="line">item.num=<span class="number">666</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr)  <span class="comment">// [&#123;mum:1&#125;,&#123;mum:666&#125;]</span></span><br></pre></td></tr></table></figure>
-<p>虽说find()方法返回的是新数组,实则返回的是老数组里符合条件的元素的引用(地址);故新数组值改变,老数组也会跟着改变(<strong>大坑啊</strong>)</p>
+<p>虽说find()方法返回的是新数组,实则返回的是老数组里符合条件的元素的引用(地址);故新数组值改变,老数组也会跟着改变(<strong>大坑啊</strong>);filter()   find()  reduce()得到的新数组,修改引用类型的值(不是用=号重新赋值)都会这样,其他未测试</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">var</span> item=arr.find(<span class="function"><span class="params">x</span>=&gt;</span> x==<span class="number">2</span>)</span><br><span class="line">item=<span class="number">666</span>;</span><br><span class="line"><span class="built_in">console</span>.log(arr)  <span class="comment">//[1,2,3]   原数组并未改变,普通数据涉及不到引用</span></span><br></pre></td></tr></table></figure>
 <p><strong>以下仅为猜想</strong>(有机会找书翻翻):</p>
 <p>这貌似证实了我之前的猜想,内存的存储涉及到引用类型,都是相互引用的,<br>比如一个大对象 {1,[1,2,3],{a:1}} 包括普通的数据也包括对象和数组;<br>而这三种数据并不是存到一块的,大对象里存的是普通数据,以及其他数组或对象的引用;分开存储的,之间靠引用来保持联系;</p>
@@ -452,15 +452,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">继承</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,7 +468,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
