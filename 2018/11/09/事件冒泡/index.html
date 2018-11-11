@@ -175,7 +175,7 @@
       
         <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡?"></a>什么是事件冒泡?</h3><p>说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数)</p>
 <p>所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
 <h4 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h4><p>与事件冒泡相对应的还有事件捕获,该怎么理解呢?</p>
 <p>可以这么比喻,警察抓捕躲在大楼某个房间的小偷,总得先从外向内进入,这就叫做捕获;当抓住之后得把他带出来吧,就得从里往外出来,这就叫冒泡;</p>
 <p>运用下面这个函数,更容易理解:</p>
@@ -472,7 +472,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -484,15 +484,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">继承</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件冒泡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
