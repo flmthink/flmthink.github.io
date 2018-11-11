@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Flmthink">
 <meta property="og:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-08T02:59:22.771Z">
+<meta property="og:updated_time" content="2018-11-10T14:09:02.483Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js内存泄露">
 <meta name="twitter:description" content="1.什么叫内存泄露程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。 对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。 不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。 2.内存泄露的几种常见类型">
@@ -188,9 +188,25 @@
 <h4 id="3-超出DOM引用"><a href="#3-超出DOM引用" class="headerlink" title="3. 超出DOM引用"></a>3. 超出DOM引用</h4><p>有时存储DOM节点到数据结构中可能有用。假设你想要迅速的更新一个表格几行内容。存储每个DOM行节点的引用到一个字典或数组会起作用。当这发生是，两个对于同个DOM元素的引用被留存：一个在DOM树中，另外一个在字典中。如果在将来的某些点你决定要移除这些行，需要让两个引用都不可用。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> elements = &#123;</span><br><span class="line">button: <span class="built_in">document</span>.getElementById(<span class="string">'button'</span>),</span><br><span class="line">image: <span class="built_in">document</span>.getElementById(<span class="string">'image'</span>),</span><br><span class="line">text: <span class="built_in">document</span>.getElementById(<span class="string">'text'</span>)</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">doStuff</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">image.src = <span class="string">'http://some.url/image'</span>;</span><br><span class="line">button.click();</span><br><span class="line"><span class="built_in">console</span>.log(text.innerHTML);</span><br><span class="line"><span class="comment">// Much more logic</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">removeButton</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// The button is a direct child of body.</span></span><br><span class="line"><span class="built_in">document</span>.body.removeChild(<span class="built_in">document</span>.getElementById(<span class="string">'button'</span>));</span><br><span class="line"><span class="comment">// At this point, we still have a reference to #button in the global</span></span><br><span class="line"><span class="comment">// elements dictionary. In other words, the button element is still in</span></span><br><span class="line"><span class="comment">// memory and cannot be collected by the GC.</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>对此的额外考虑，必须处理DOM树内的内部节点或叶子节点。假设你在JavaScript代码中保留了一个对于特定的表格内节点（一个td标签）的引用。在将来的某个点决定从DOM中移除这个表格，但是保留对于那个节点的引用。直观的，会假设GC会回收除那个节点之外的每个节点。在实践中，这不会发生的：这个单节点是那个表格的子节点，子节点保留对父节点引用。换句话说，来自JavaScript代码的表格元素的引用会引起在内存里存整个表格。当保留DOM元素的引用的时候，仔细考虑下。</p>
-<h4 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h4><p>一个JavaScript开发的关键点是闭包：从父级作用域捕获变量的匿名函数。很多开发者发现，由于JavaScript runtime的实现细节，有以一种微妙的方式泄漏的可能:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> theThing = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> replaceThing = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">var</span> originalThing = theThing;</span><br><span class="line"><span class="keyword">var</span> unused = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (originalThing)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"hi"</span>);</span><br><span class="line">&#125;;</span><br><span class="line">theThing = &#123;</span><br><span class="line">longStr: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1000000</span>).join(<span class="string">'*'</span>),</span><br><span class="line">someMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(someMessage);</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(replaceThing, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
-<p>这个代码片段做了一件事：每次<code>replaceThing</code>被调用的时候，<code>theThing</code>获取到一个包括一个大数组和新闭包(<code>somMethod</code>)的新对象。同时，变量<code>unused</code>保留了一个有<code>originalThing</code>（<code>theThing</code>从之前的对<code>replaceThing</code>的调用）引用的闭包。已经有点疑惑了，哈？重要的是一旦一个作用域被在同个父作用域下的闭包创建，那个作用域是共享的。这种情况下，为闭包<code>somMethod</code>创建的作用域被<code>unused</code>共享了。<code>unused</code>有一个对<code>originalThing</code>的引用。即使<code>unused</code>从来没被用过，<code>someMethod</code>可以通过<code>theTing</code>被使用。由于<code>someMethod</code>和<code>unused</code>共享了闭包作用域，即使<code>unused</code>从来没被用过，它对<code>originalThing</code>的引用迫使它停留在活跃状态（不能回收）。当这个代码片段重复运行的时候，可以看到内存使用稳步的增长。GC运行的时候，这并不会减轻。本质上，一组关联的闭包被创建（同<code>unused</code>变量在表单中的根节点一起），这些闭包作用域中每个带了大数组一个非直接的引用，导致了大型的泄漏。</p>
+<h4 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4. 闭包"></a>4. 闭包</h4><p>JavaScript开发的一个关键点是闭包：从父级作用域捕获变量的匿名函数。Meteor 的开发者发现，由于JavaScript runtime的实现细节，有以一种微妙的方式泄漏的可能:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> theThing = <span class="literal">null</span>;</span><br><span class="line"><span class="keyword">var</span> replaceThing = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> originalThing = theThing;</span><br><span class="line">	<span class="keyword">var</span> unused = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (originalThing)</span><br><span class="line">			<span class="built_in">console</span>.log(<span class="string">"hi"</span>);</span><br><span class="line">	&#125;;</span><br><span class="line">	theThing = &#123;</span><br><span class="line">		longStr: <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">1000000</span>).join(<span class="string">'*'</span>),</span><br><span class="line">		someMethod: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(someMessage);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(replaceThing, <span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+<p>这个代码片段做了一件事：每次<code>replaceThing</code>被调用的时候，<code>theThing</code>获取到一个包括一个大数组和新闭包(<code>somMethod</code>)的新对象。同时，变量<code>unused</code>保留了一个有<code>originalThing</code>（<code>theThing</code>从之前的对<code>replaceThing</code>的调用）引用的闭包。已经有点疑惑了，哈？重要的是一旦一个作用域被在同个父作用域下的闭包创建，那个作用域是共享的。这种情况下，为闭包<code>somMethod</code>创建的作用域被<code>unused</code>共享了。<code>unused</code>有一个对<code>originalThing</code>的引用。即使<code>unused</code>从来没被用过，<code>someMethod</code>可以通过<code>theTing</code>被使用。由于<code>someMethod</code>和<code>unused</code>共享了闭包作用域，即使<code>unused</code>从来没被用过，它对<code>originalThing</code>的引用迫使它停留在活跃状态（不能回收）。当这个代码片段重复运行的时候，可以看到内存使用稳步的增长。GC运行的时候，这并不会减轻。本质上，一组关联的闭包被创建（同<code>unused</code>变量在表单中的根节点一起），每个闭包作用域都持有一个对大数组的间接引用，这导致了一个巨大的内存泄露。</p>
+<h3 id="3-优化数据的一些小方法"><a href="#3-优化数据的一些小方法" class="headerlink" title="3. 优化数据的一些小方法"></a>3. 优化数据的一些小方法</h3><p>要领 ：尽量少创建全局变量；尽量内存对象重用；</p>
+<ol>
+<li><p>优化对象 object:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建方法，遍历对象，逐个删除，最终使其成为一个空对象</span></span><br><span class="line">oWipe=<span class="function"><span class="keyword">function</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i <span class="keyword">in</span> obj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(obj.hasOwnProperty(i))</span><br><span class="line">            <span class="keyword">delete</span> obj[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有的时候，可以用这个函数来清理对象，再作为obj添加新的属性，就可以达到重复利用的目的。虽然看似遍历要比简单的通过创建一个{}要耗时一些，但是实时性要求很高的代码中，这一点短暂的消耗，将会有效的减少垃圾堆积。并且最终避免垃圾回收暂停，这是很值得的。</p>
+</li>
+<li><p>优化数组array</p>
+<p>将[]赋值给一个数组对象，是清空数组的捷径；但这种方法是又创建了一个新数组对象，原来的数组对象变成了内存中一片垃圾，等待着被回收释放。</p>
+<p>另一种方法：arr.length=0  也能达到清空数组的目的，而且能实现数组重用，减少内存垃圾产生；</p>
+</li>
+<li><p>优化函数function</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setInterval((<span class="function"><span class="keyword">function</span>(<span class="params">self</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        self.tick()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)(<span class="keyword">this</span>),<span class="number">16</span>)</span><br><span class="line"><span class="comment">//每隔16毫秒就会调用一次，仔细看，每调用一次，就会创建一个新的匿名方法并调用，返回一个新的方法对象，这就导致了大量的对象方法垃圾；</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//将方法定义为一个变量，每次都重用这个方法；</span></span><br><span class="line"><span class="keyword">var</span> <span class="keyword">this</span>.tickFunc=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    funtion(self)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            sel.tick();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">setInterval(<span class="keyword">this</span>.tickFunc,<span class="number">16</span>)</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
 
       
 
@@ -316,7 +332,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么叫内存泄露"><span class="toc-number">1.</span> <span class="toc-text">1.什么叫内存泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内存泄露的几种常见类型"><span class="toc-number">2.</span> <span class="toc-text">2.内存泄露的几种常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1意外的全局变量引起的内存泄漏"><span class="toc-number">2.1.</span> <span class="toc-text">2.1意外的全局变量引起的内存泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2被忘记的-Timers-定时器-或callbacks（回调）"><span class="toc-number">2.2.</span> <span class="toc-text">2.2被忘记的 Timers(定时器) 或callbacks（回调）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-超出DOM引用"><span class="toc-number">2.3.</span> <span class="toc-text">3. 超出DOM引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-闭包"><span class="toc-number">2.4.</span> <span class="toc-text">4. 闭包</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-什么叫内存泄露"><span class="toc-number">1.</span> <span class="toc-text">1.什么叫内存泄露</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-内存泄露的几种常见类型"><span class="toc-number">2.</span> <span class="toc-text">2.内存泄露的几种常见类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1意外的全局变量引起的内存泄漏"><span class="toc-number">2.1.</span> <span class="toc-text">2.1意外的全局变量引起的内存泄漏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2被忘记的-Timers-定时器-或callbacks（回调）"><span class="toc-number">2.2.</span> <span class="toc-text">2.2被忘记的 Timers(定时器) 或callbacks（回调）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-超出DOM引用"><span class="toc-number">2.3.</span> <span class="toc-text">3. 超出DOM引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-闭包"><span class="toc-number">2.4.</span> <span class="toc-text">4. 闭包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-优化数据的一些小方法"><span class="toc-number">3.</span> <span class="toc-text">3. 优化数据的一些小方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -458,6 +474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -466,19 +486,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内存泄露</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">继承</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,6 +507,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">索引</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内存泄露</a>
               </li>
              
               <li class="article-tag-list-item">

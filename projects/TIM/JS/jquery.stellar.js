@@ -80,7 +80,7 @@
 
 		prefixedTransform = vendorPrefix('transform'),
 
-		supportsBackgroundPositionXY = $('<div>', { style: 'background:#fff' }).css('background-position-x') !== undefined,
+		supportsBackgroundPositionXY = $('<div />', { style: 'background:#fff' }).css('background-position-x') !== undefined,
 
 		setBackgroundPosition = (supportsBackgroundPositionXY ?
 			function($elem, x, y) {
@@ -648,4 +648,4 @@
 
 	// Expose the plugin class so it can be modified
 	window.Stellar = Plugin;
-}(jQuery, this, document));</div>
+}(jQuery, this, document));
