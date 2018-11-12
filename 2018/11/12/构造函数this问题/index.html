@@ -6,18 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/11 | Flmthink</title>
+  <title>构造函数this问题 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个执着追求技术的学习者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Flmthink">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/page/2/index.html">
+  <meta name="description" content="平时见到的构造函数大都这么写的 1234567//实例与原型分开来写function Foo(name)&amp;#123;    this.name=name||&apos;default&apos;  //实例属性    this.instanceMethod=function()&amp;#123;----&amp;#125;  //实例方法&amp;#125;Foo.prototype.info=&apos;123&apos;  //原型属性Foo.proto">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="构造函数this问题">
+<meta property="og:url" content="http://yoursite.com/2018/11/12/构造函数this问题/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="一个执着追求技术的学习者">
+<meta property="og:description" content="平时见到的构造函数大都这么写的 1234567//实例与原型分开来写function Foo(name)&amp;#123;    this.name=name||&apos;default&apos;  //实例属性    this.instanceMethod=function()&amp;#123;----&amp;#125;  //实例方法&amp;#125;Foo.prototype.info=&apos;123&apos;  //原型属性Foo.proto">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-12T13:10:53.810Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flmthink">
-<meta name="twitter:description" content="一个执着追求技术的学习者">
+<meta name="twitter:title" content="构造函数this问题">
+<meta name="twitter:description" content="平时见到的构造函数大都这么写的 1234567//实例与原型分开来写function Foo(name)&amp;#123;    this.name=name||&apos;default&apos;  //实例属性    this.instanceMethod=function()&amp;#123;----&amp;#125;  //实例方法&amp;#125;Foo.prototype.info=&apos;123&apos;  //原型属性Foo.proto">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -151,36 +153,42 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-构造函数this问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      构造函数this问题
+    </h1>
+  
+
+        
+        <a href="/2018/11/12/构造函数this问题/" class="archive-article-date">
+  	<time datetime="2018-11-12T12:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>平时见到的构造函数大都这么写的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例与原型分开来写</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name||<span class="string">'default'</span>  <span class="comment">//实例属性</span></span><br><span class="line">    <span class="keyword">this</span>.instanceMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;----&#125;  <span class="comment">//实例方法</span></span><br><span class="line">&#125;</span><br><span class="line">Foo.prototype.info=<span class="string">'123'</span>  <span class="comment">//原型属性</span></span><br><span class="line">Foo.prototype.protoMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;---&#125; <span class="comment">//原型方法</span></span><br></pre></td></tr></table></figure>
+<p>其实可以一块来写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name||<span class="string">'default'</span>  <span class="comment">//实例属性</span></span><br><span class="line">    <span class="keyword">this</span>.instanceMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;----&#125;  <span class="comment">//实例方法</span></span><br><span class="line">    Foo.prototype.info=<span class="string">'123'</span>  <span class="comment">//原型属性</span></span><br><span class="line">	Foo.prototype.protoMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;---&#125; <span class="comment">//原型方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意 写原型方法或属性时,用构造函数Foo,而不是this.这里的this代表的是实例对象;</span></span><br></pre></td></tr></table></figure>
+<p>但是为什么都写在外面呢?这就涉及到性能问题:</p>
+<p>把方法写在<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>中比写在构造函数中消耗的内存更小，<br>因为在内存中一个类的<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>只有一个，写在<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>中的行为可以被所有实例共享，实例化的时候并不会在实例的内存中再复制一份.<br>而写在类中的方法，实例化的时候会在每个实例中再复制一份，所以消耗的内存更高</p>
+<p><strong>所以:原型方法及原型属性尽量写在构造函数外面;</strong></p>
+<p>补:<strong>构造函数中定义的属性和方法要比原型中定义的属性和方法的优先级高</strong>，如果定义了同名称的属性和方法，构造函数中的将会覆盖原型中的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js中闭包的理解/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js中闭包的理解/">js中闭包的理解</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -188,271 +196,144 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/12/构造函数this问题/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js实现继承的几种方式/" class="archive-article-date">
-  	<time datetime="2018-11-06T08:55:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2018/11/12/网站重构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">网站重构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js实现继承的几种方式/">js实现继承的几种方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">继承</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/for循环中var与let声明条件变量的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T10:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/for循环中var与let声明条件变量的区别/">for循环中var与let声明条件变量的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/var-let-const区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T08:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/var-let-const区别/">var,let,const区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">var/let/const</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/深入理解setTimeout()/" class="archive-article-date">
-  	<time datetime="2018-11-05T07:43:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/深入理解setTimeout()/">深入理解settimeout()</a>
-    </h1>
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '23727cce6e124e246cac',
+  	clientSecret: '249caad126b331a5b9fd47d95037a200c5308afd',
+  	repo: 'flmthink.github.io',
+  	owner: 'flmthink',
+  	admin: ['flmthink'],
+  	id: 'Mon Nov 12 2018 20:53:32 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">setTimeout()</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/bind()与-all()及apply()的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T06:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/bind()与-all()及apply()的区别/">.bind()与.call()/.applay()的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">this指向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/03/半个五角星变黄/" class="archive-article-date">
-  	<time datetime="2018-11-02T16:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/03/半个五角星变黄/">半个五角星变黄</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/文字超出部分出现省略号/" class="archive-article-date">
-  	<time datetime="2018-11-02T14:17:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/文字超出部分出现省略号/">文字不换行及省略号</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/11/">&laquo; Prev</a><a class="page-number" href="/archives/2018/11/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -476,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

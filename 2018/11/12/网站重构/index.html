@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/11 | Flmthink</title>
+  <title>网站重构 | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个执着追求技术的学习者">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Flmthink">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/page/2/index.html">
+  <meta name="description" content="今天投简历时,看到一个公司要求”对网站重构”有一定了解; 在我的认知里,重构一词即为重新构造,将老网站的技术更新; 百度一下,除了一本年代久远的&amp;lt;网站重构&amp;gt;书之外,只剩下一些网友的个人理解;那本书的东西还是介绍将table布局改为div+css的技术,自然没参考价值; 网络上的总结: 在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一 致的行为。也就是说是在不改变 UI">
+<meta property="og:type" content="article">
+<meta property="og:title" content="网站重构">
+<meta property="og:url" content="http://yoursite.com/2018/11/12/网站重构/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="一个执着追求技术的学习者">
+<meta property="og:description" content="今天投简历时,看到一个公司要求”对网站重构”有一定了解; 在我的认知里,重构一词即为重新构造,将老网站的技术更新; 百度一下,除了一本年代久远的&amp;lt;网站重构&amp;gt;书之外,只剩下一些网友的个人理解;那本书的东西还是介绍将table布局改为div+css的技术,自然没参考价值; 网络上的总结: 在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一 致的行为。也就是说是在不改变 UI">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-11-12T12:07:02.617Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Flmthink">
-<meta name="twitter:description" content="一个执着追求技术的学习者">
+<meta name="twitter:title" content="网站重构">
+<meta name="twitter:description" content="今天投简历时,看到一个公司要求”对网站重构”有一定了解; 在我的认知里,重构一词即为重新构造,将老网站的技术更新; 百度一下,除了一本年代久远的&amp;lt;网站重构&amp;gt;书之外,只剩下一些网友的个人理解;那本书的东西还是介绍将table布局改为div+css的技术,自然没参考价值; 网络上的总结: 在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一 致的行为。也就是说是在不改变 UI">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -151,308 +152,266 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-网站重构" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      网站重构
+    </h1>
+  
+
+        
+        <a href="/2018/11/12/网站重构/" class="archive-article-date">
+  	<time datetime="2018-11-12T11:22:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天投简历时,看到一个公司要求”对网站重构”有一定了解;</p>
+<p>在我的认知里,重构一词即为重新构造,将老网站的技术更新;</p>
+<p>百度一下,除了一本年代久远的&lt;网站重构&gt;书之外,只剩下一些网友的个人理解;<br>那本书的东西还是介绍将table布局改为div+css的技术,自然没参考价值;</p>
+<p><strong>网络上的总结</strong>:</p>
+<pre><code>在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一
+</code></pre><p>致的行为。也就是说是在不改变 UI 的情况下，对网站进行优化，在扩展的同时保持一致的 UI。</p>
+<p>对于传统的网站来说重构通常是:</p>
+<ol>
+<li>表格(table)布局改为 DIV + CSS</li>
+<li>使网站前端兼容于现代浏览器(针对于不合规范的 CSS、如对 IE6 有效的) </li>
+<li>对于移动平台的优化</li>
+<li>针对于 SEO 进行优化</li>
+<li>减少代码间的耦合,让代码保持弹性</li>
+<li>设计可扩展的 API</li>
+<li>代替旧有的框架、语言(如 VB)</li>
+<li>增强用户体验</li>
+<li>压缩 JS、CSS、image 等前端资源(通常是由服务器来解决)</li>
+<li>程序的性能优化(如数据读写)</li>
+<li>采用 CDN 来加速资源加载</li>
+<li>对于 JS DOM 的优化</li>
+<li>HTTP服务器的文件缓存</li>
+</ol>
+<p>看到了吧,上面还是提到了IE6,可见这个总结依旧挺老的了,但大体思路很明确;</p>
+<p><strong>我的理解</strong>:</p>
+<p>网站重构,无非就是</p>
+<ol>
+<li>采用最新的技术取代老技术,使得代码更优雅,更简洁,更具有可读性,更好的性能,更好的可维护性;</li>
+<li>同时保证多平台的兼容;</li>
+<li>运用现在大火的模块化;数据表现分离;</li>
+<li>资源的压缩:js css html 代码压缩,图片优化(base64 ,iconfont,sprite)</li>
+<li>缓存优化</li>
+</ol>
+<p>详细的可看看这个</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旧网站</th>
+<th>新网站</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>css</td>
+<td>原生css</td>
+<td>用到了less预处理</td>
+</tr>
+<tr>
+<td>网站图片</td>
+<td>都是单张图片</td>
+<td>css sprite+iconfont</td>
+</tr>
+<tr>
+<td>内容结构</td>
+<td>拼接字符串</td>
+<td>模板</td>
+</tr>
+<tr>
+<td>列表页优化</td>
+<td>无</td>
+<td>懒加载</td>
+</tr>
+<tr>
+<td>cdn使用</td>
+<td>无</td>
+<td>一些库和框架使用了cdn</td>
+</tr>
+<tr>
+<td>后台管理页</td>
+<td>php的模板</td>
+<td>Angularjs</td>
+</tr>
+<tr>
+<td>模块化</td>
+<td>无</td>
+<td>webpack</td>
+</tr>
+<tr>
+<td>版本控制</td>
+<td>无</td>
+<td>git</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js中闭包的理解/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js中闭包的理解/">js中闭包的理解</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/12/网站重构/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/06/js实现继承的几种方式/" class="archive-article-date">
-  	<time datetime="2018-11-06T08:55:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/11/12/构造函数this问题/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          构造函数this问题
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/11/12/字符串中出现次数最少且最靠前的字符/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">字符串中出现次数最少且最靠前的字符</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/06/js实现继承的几种方式/">js实现继承的几种方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">继承</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/for循环中var与let声明条件变量的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T10:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/for循环中var与let声明条件变量的区别/">for循环中var与let声明条件变量的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/var-let-const区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T08:40:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/var-let-const区别/">var,let,const区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">var/let/const</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/深入理解setTimeout()/" class="archive-article-date">
-  	<time datetime="2018-11-05T07:43:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/深入理解setTimeout()/">深入理解settimeout()</a>
-    </h1>
+  <div id="gitalk-container" style="padding: 0px 30px 0px 30px;"></div> 
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+
+if(true){
+	var gitalk = new Gitalk({
+  	clientID: '23727cce6e124e246cac',
+  	clientSecret: '249caad126b331a5b9fd47d95037a200c5308afd',
+  	repo: 'flmthink.github.io',
+  	owner: 'flmthink',
+  	admin: ['flmthink'],
+  	id: 'Mon Nov 12 2018 19:22:47 GMT+0800',
+  	distractionFreeMode: 'true'
+})
+gitalk.render('gitalk-container') 
+}
+</script>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">setTimeout()</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/05/bind()与-all()及apply()的区别/" class="archive-article-date">
-  	<time datetime="2018-11-05T06:40:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/05/bind()与-all()及apply()的区别/">.bind()与.call()/.applay()的区别</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">this指向</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/03/半个五角星变黄/" class="archive-article-date">
-  	<time datetime="2018-11-02T16:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/03/半个五角星变黄/">半个五角星变黄</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/文字超出部分出现省略号/" class="archive-article-date">
-  	<time datetime="2018-11-02T14:17:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/文字超出部分出现省略号/">文字不换行及省略号</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2018/11/">&laquo; Prev</a><a class="page-number" href="/archives/2018/11/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -476,8 +435,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

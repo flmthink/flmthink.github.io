@@ -153,6 +153,238 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-构造函数this问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/12/构造函数this问题/">构造函数this问题</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/12/构造函数this问题/" class="archive-article-date">
+  	<time datetime="2018-11-12T12:53:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>平时见到的构造函数大都这么写的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实例与原型分开来写</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name||<span class="string">'default'</span>  <span class="comment">//实例属性</span></span><br><span class="line">    <span class="keyword">this</span>.instanceMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;----&#125;  <span class="comment">//实例方法</span></span><br><span class="line">&#125;</span><br><span class="line">Foo.prototype.info=<span class="string">'123'</span>  <span class="comment">//原型属性</span></span><br><span class="line">Foo.prototype.protoMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;---&#125; <span class="comment">//原型方法</span></span><br></pre></td></tr></table></figure>
+<p>其实可以一块来写</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Foo</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name=name||<span class="string">'default'</span>  <span class="comment">//实例属性</span></span><br><span class="line">    <span class="keyword">this</span>.instanceMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;----&#125;  <span class="comment">//实例方法</span></span><br><span class="line">    Foo.prototype.info=<span class="string">'123'</span>  <span class="comment">//原型属性</span></span><br><span class="line">	Foo.prototype.protoMethod=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;---&#125; <span class="comment">//原型方法</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//注意 写原型方法或属性时,用构造函数Foo,而不是this.这里的this代表的是实例对象;</span></span><br></pre></td></tr></table></figure>
+<p>但是为什么都写在外面呢?这就涉及到性能问题:</p>
+<p>把方法写在<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>中比写在构造函数中消耗的内存更小，<br>因为在内存中一个类的<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>只有一个，写在<a href="http://www.css119.com/archives/tag/%E5%8E%9F%E5%9E%8B" target="_blank" rel="noopener">原型</a>中的行为可以被所有实例共享，实例化的时候并不会在实例的内存中再复制一份.<br>而写在类中的方法，实例化的时候会在每个实例中再复制一份，所以消耗的内存更高</p>
+<p><strong>所以:原型方法及原型属性尽量写在构造函数外面;</strong></p>
+<p>补:<strong>构造函数中定义的属性和方法要比原型中定义的属性和方法的优先级高</strong>，如果定义了同名称的属性和方法，构造函数中的将会覆盖原型中的</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/12/构造函数this问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-网站重构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/12/网站重构/">网站重构</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/12/网站重构/" class="archive-article-date">
+  	<time datetime="2018-11-12T11:22:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天投简历时,看到一个公司要求”对网站重构”有一定了解;</p>
+<p>在我的认知里,重构一词即为重新构造,将老网站的技术更新;</p>
+<p>百度一下,除了一本年代久远的&lt;网站重构&gt;书之外,只剩下一些网友的个人理解;<br>那本书的东西还是介绍将table布局改为div+css的技术,自然没参考价值;</p>
+<p><strong>网络上的总结</strong>:</p>
+<pre><code>在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一
+</code></pre><p>致的行为。也就是说是在不改变 UI 的情况下，对网站进行优化，在扩展的同时保持一致的 UI。</p>
+<p>对于传统的网站来说重构通常是:</p>
+<ol>
+<li>表格(table)布局改为 DIV + CSS</li>
+<li>使网站前端兼容于现代浏览器(针对于不合规范的 CSS、如对 IE6 有效的) </li>
+<li>对于移动平台的优化</li>
+<li>针对于 SEO 进行优化</li>
+<li>减少代码间的耦合,让代码保持弹性</li>
+<li>设计可扩展的 API</li>
+<li>代替旧有的框架、语言(如 VB)</li>
+<li>增强用户体验</li>
+<li>压缩 JS、CSS、image 等前端资源(通常是由服务器来解决)</li>
+<li>程序的性能优化(如数据读写)</li>
+<li>采用 CDN 来加速资源加载</li>
+<li>对于 JS DOM 的优化</li>
+<li>HTTP服务器的文件缓存</li>
+</ol>
+<p>看到了吧,上面还是提到了IE6,可见这个总结依旧挺老的了,但大体思路很明确;</p>
+<p><strong>我的理解</strong>:</p>
+<p>网站重构,无非就是</p>
+<ol>
+<li>采用最新的技术取代老技术,使得代码更优雅,更简洁,更具有可读性,更好的性能,更好的可维护性;</li>
+<li>同时保证多平台的兼容;</li>
+<li>运用现在大火的模块化;数据表现分离;</li>
+<li>资源的压缩:js css html 代码压缩,图片优化(base64 ,iconfont,sprite)</li>
+<li>缓存优化</li>
+</ol>
+<p>详细的可看看这个</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旧网站</th>
+<th>新网站</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>css</td>
+<td>原生css</td>
+<td>用到了less预处理</td>
+</tr>
+<tr>
+<td>网站图片</td>
+<td>都是单张图片</td>
+<td>css sprite+iconfont</td>
+</tr>
+<tr>
+<td>内容结构</td>
+<td>拼接字符串</td>
+<td>模板</td>
+</tr>
+<tr>
+<td>列表页优化</td>
+<td>无</td>
+<td>懒加载</td>
+</tr>
+<tr>
+<td>cdn使用</td>
+<td>无</td>
+<td>一些库和框架使用了cdn</td>
+</tr>
+<tr>
+<td>后台管理页</td>
+<td>php的模板</td>
+<td>Angularjs</td>
+</tr>
+<tr>
+<td>模块化</td>
+<td>无</td>
+<td>webpack</td>
+</tr>
+<tr>
+<td>版本控制</td>
+<td>无</td>
+<td>git</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+</tr>
+</tbody>
+</table>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/12/网站重构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-字符串中出现次数最少且最靠前的字符" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -799,175 +1031,9 @@
 
 
   
-    <article id="post-js中闭包的理解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/js中闭包的理解/">js中闭包的理解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/06/js中闭包的理解/" class="archive-article-date">
-  	<time datetime="2018-11-06T11:04:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>在高级程序设计中对闭包定义：”闭包是指有权限访问另一个函数作用域中的变量的函数。”</p>
-<h2 id="1-大体总结为一下两点"><a href="#1-大体总结为一下两点" class="headerlink" title="1. 大体总结为一下两点:"></a>1. 大体总结为一下两点:</h2><ol>
-<li><strong>函数内嵌套函数;</strong></li>
-<li><strong>内部函数引用外部函数里定义的变量;</strong></li>
-</ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="number">3</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">y</span>) </span>&#123;</span><br><span class="line">        alert(x + y + (++tmp));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> bar = foo(<span class="number">2</span>); <span class="comment">// bar 现在是一个闭包</span></span><br><span class="line">bar(<span class="number">10</span>);</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/11/06/js中闭包的理解/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闭包</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/js中闭包的理解/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-js实现继承的几种方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/js实现继承的几种方式/">js实现继承的几种方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/06/js实现继承的几种方式/" class="archive-article-date">
-  	<time datetime="2018-11-06T08:55:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言:"></a>前言:</h2><p>既然要实现继承，那么首先我们得有一个父类，代码如下：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Animal</span> (<span class="params">name</span>) </span>&#123;  <span class="comment">//定义一个动物类</span></span><br><span class="line">  <span class="keyword">this</span>.name = name || <span class="string">'Animal'</span>; <span class="comment">//属性</span></span><br><span class="line">  <span class="keyword">this</span>.sleep = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;      <span class="comment">//实例方法</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在睡觉！'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">Animal.prototype.eat = <span class="function"><span class="keyword">function</span>(<span class="params">food</span>) </span>&#123; <span class="comment">//原型方法</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">'正在吃：'</span> + food);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/11/06/js实现继承的几种方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">继承</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/js实现继承的几种方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1058,15 +1124,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">this指向</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,7 +1148,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1090,7 +1156,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">继承</a>
+                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
