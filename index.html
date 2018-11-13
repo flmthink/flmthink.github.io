@@ -153,6 +153,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-commomJS与ES6导出与导入模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/13/commomJS与ES6导出与导入模块/">commomJS与ES6导出与导入模块</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/13/commomJS与ES6导出与导入模块/" class="archive-article-date">
+  	<time datetime="2018-11-13T13:08:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天面试遇到一个最基础的问题,自己居然蠢到全部搞混了;</p>
+<p>commonJS与ES6导出与导入模块方式?</p>
+<h4 id="commonJS"><a href="#commonJS" class="headerlink" title="commonJS"></a>commonJS</h4><p>是node的模块规范;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//模块一文件</span><br><span class="line">var n=&quot;n&quot;;</span><br><span class="line">var m=function()&#123;console.log(&quot;m&quot;)&#125;</span><br><span class="line">//导出 多个</span><br><span class="line">module.exports.n=n;</span><br><span class="line">module.exports.m=m;</span><br><span class="line">//此处用exports.n 也可以,因为exports是module.exoirts的一个引用</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">模块二文件</span><br><span class="line">var x=&quot;x&quot;;</span><br><span class="line">//导出单个模块 </span><br><span class="line">module.exports=x;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//导入模块    </span><br><span class="line">var module1=require(&apos;模块一文件url&apos;)</span><br><span class="line">var module2=require(&apos;模块二文件url&apos;)</span><br><span class="line">//使用</span><br><span class="line">console.log(module1.n)  //n</span><br><span class="line">module1.n()	//m</span><br><span class="line">console.log(module2) //x</span><br></pre></td></tr></table></figure>
+<p><strong>ES6模块</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">var n=&apos;n&apos;;</span><br><span class="line">var m=function()&#123;console.log(&apos;m&apos;)&#125;;</span><br><span class="line">var x=&#123;&#125;;</span><br><span class="line">//导出模块</span><br><span class="line">export default n;  //指定默认输出(只可用一次)</span><br><span class="line">export &#123;m,x&#125;  //导出多个</span><br><span class="line"></span><br><span class="line">//也可以这样,指定新的名字</span><br><span class="line">export &#123;</span><br><span class="line">	m as newName-m,</span><br><span class="line">	x as newName-n,</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//接收方式</span><br><span class="line">import name from &apos;地址&apos;   //export default 暴露的可以自定义名字接收</span><br><span class="line">import &#123;newName-m,newName-x&#125; from &apos;地址&apos;  //export 暴露的,不可自定义名字,如若要自定义名字,只能在暴露时更该(如上面代码)</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/13/commomJS与ES6导出与导入模块/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-构造函数this问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -637,7 +723,7 @@
       
         <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡?"></a>什么是事件冒泡?</h3><p>说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数)</p>
 <p>所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
 <h4 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h4><p>与事件冒泡相对应的还有事件捕获,该怎么理解呢?</p>
 <p>可以这么比喻,警察抓捕躲在大楼某个房间的小偷,总得先从外向内进入,这就叫做捕获;当抓住之后得把他带出来吧,就得从里往外出来,这就叫冒泡;</p>
 <p>运用下面这个函数,更容易理解:</p>
@@ -949,87 +1035,6 @@
 
 
   
-    <article id="post-纯js实现点击列表输出对应索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/纯js实现点击列表输出对应索引/">纯js实现点击列表输出对应索引</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/06/纯js实现点击列表输出对应索引/" class="archive-article-date">
-  	<time datetime="2018-11-06T13:17:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="首先HTML"><a href="#首先HTML" class="headerlink" title="首先HTML:"></a>首先HTML:</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span>	</span><br><span class="line">	  -----</span><br><span class="line">	<span class="tag">&lt;<span class="name">li</span>&gt;</span>10<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="方法一"><a href="#方法一" class="headerlink" title="方法一:"></a>方法一:</h2><p><strong>核心:循环,块级作用域</strong></p>
-        
-          <a class="article-more-a" href="/2018/11/06/纯js实现点击列表输出对应索引/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">索引</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/纯js实现点击列表输出对应索引/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1131,15 +1136,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,7 +1148,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1156,6 +1161,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">var/let/const</a>
               </li>
              
               <li class="article-tag-list-item">
