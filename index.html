@@ -153,6 +153,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-无刷新页面改变窗口url" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/17/无刷新页面改变窗口url/">无刷新页面改变窗口url</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/17/无刷新页面改变窗口url/" class="archive-article-date">
+  	<time datetime="2018-11-17T05:29:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>相关文档：<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating<em>the</em>browser_history</a></p>
+<h3 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h3><ol>
+<li>页面的跳转（前进后退，点击等）不重新请求页面</li>
+<li>页面URL与页面展现内容一致（符合人们对传统网页的认识）</li>
+<li>在不支持的浏览器下降级成传统网页的方式</li>
+</ol>
+<h3 id="使用到的API"><a href="#使用到的API" class="headerlink" title="使用到的API"></a>使用到的API</h3><h4 id="history-state"><a href="#history-state" class="headerlink" title="history.state"></a>history.state</h4><p>当前URL下对应的状态信息。如果当前URL不是通过pushState或者replaceState产生的，那么history.state是null。</p>
+<h4 id="history-pushState-state-title-url"><a href="#history-pushState-state-title-url" class="headerlink" title="history.pushState(state, title, url)"></a>history.pushState(state, title, url)</h4><p>将当前URL和history.state加入到history中，并用新的state和URL替换当前。不会造成页面刷新。</p>
+<p>state：与要跳转到的URL对应的状态信息。</p>
+<p>title：不知道干啥用，传空字符串就行了。</p>
+<p>url：要跳转到的URL地址，不能跨域。</p>
+<h4 id="history-replaceState-state-title-url"><a href="#history-replaceState-state-title-url" class="headerlink" title="history.replaceState(state, title, url)"></a>history.replaceState(state, title, url)</h4><p>用新的state和URL替换当前。不会造成页面刷新。</p>
+<p>state：与要跳转到的URL对应的状态信息。</p>
+<p>title：不知道干啥用，传空字符串就行了。</p>
+<p>url：要跳转到的URL地址，不能跨域。</p>
+<h4 id="window-onpopstate"><a href="#window-onpopstate" class="headerlink" title="window.onpopstate"></a>window.onpopstate</h4><p>history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取history.state。</p>
+<h3 id="支持性判断"><a href="#支持性判断" class="headerlink" title="支持性判断"></a>支持性判断</h3><p>if (‘pushState’ in history) {…}</p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>用户通过“点击触发”，“操作历史”，“直接访问URL”的方式修改当前URL。这三种触发方式会使浏览器做出不同的行为。如果页面做无刷跳转，那么页面具体显示什么内容需要js来控制，js则需要根据一些信息来知道当前应该显示什么内容，这个信息就是history.state。这样我们只要保持URL和history.state一一对应，就能保证URL和内容一一对应。大部分情况下URL和history.state都是一一对应的，但通过直接URL访问页面的方式进入页面，history.state是null，所以我们需要把URL转换成对应的history.state写入。我们不能直接写入history.state，需要通过replaceState的方式写入。对于不支持pushstate的浏览器，一律修改href跳转页面，等同于直接访问URL。示意图如下。 <img src="http://gtms01.alicdn.com/tps/i1/T1N9rZFdddXXbZIE3X-1200-900.png" alt="img"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/17/无刷新页面改变窗口url/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-commomJS与ES6导出与导入模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -723,7 +814,7 @@
       
         <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡?"></a>什么是事件冒泡?</h3><p>说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数)</p>
 <p>所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
 <h4 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h4><p>与事件冒泡相对应的还有事件捕获,该怎么理解呢?</p>
 <p>可以这么比喻,警察抓捕躲在大楼某个房间的小偷,总得先从外向内进入,这就叫做捕获;当抓住之后得把他带出来吧,就得从里往外出来,这就叫冒泡;</p>
 <p>运用下面这个函数,更容易理解:</p>
@@ -952,89 +1043,6 @@
 
 
   
-    <article id="post-Vue的优缺点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/06/Vue的优缺点/">Vue的优缺点</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/06/Vue的优缺点/" class="archive-article-date">
-  	<time datetime="2018-11-06T14:46:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="优势"><a href="#优势" class="headerlink" title="优势:"></a>优势:</h2><ol>
-<li>Vue.js在可读性、可维护性和趣味性之间做到了很好的平衡。Vue.js处在React和Angular 1之间，而且如果你有仔细看Vue的指南，就会发现Vue.js从其它框架借鉴了很多设计理念。</li>
-<li>Vue.js从React那里借鉴了组件化、prop、单向数据流、性能、虚拟渲染，并意识到状态管理的重要性。</li>
-<li>Vue.js从Angular那里借鉴了模板，并赋予了更好的语法，以及双向数据绑定（在单个组件里）。</li>
-<li>它不强制使用某种编译器，所以你完全可以在遗留代码里使用Vue，并对之前乱糟糟的jQuery代码进行改造。</li>
-</ol>
-<h2 id="不足"><a href="#不足" class="headerlink" title="不足:"></a>不足:</h2><ol>
-<li>最大的一个问题：模板的运行时错误描述不够直观，这个跟Angular 1有点类似。Vue.js为JS代码提供了很多有用的警告信息，例如当你试图改变prop或不恰当地使用data()方法时，它会给出警告。这也是从React借鉴过来的比较好的方面。但对模板的运行时错误处理仍然是Vue的一个弱项，它的异常堆栈信息总是指向Vue.js的内部方法，不够直观。</li>
-<li>这个框架还很年轻，还没有稳定的社区组件。大部分组件是为Vue.js 1创建的，对于新手来说有时候难以区分它们的版本。不过你可以在不使用其它第三方库的前提下在Vue里面完成很多事情，你可能需要一些ajax库（<a href="https://medium.com/the-vue-point/retiring-vue-resource-871a82880af4#.si9301ufo" target="_blank" rel="noopener">如果你不关心同构应用，可以考虑vue-resource</a>）或者vue-router，这在一定程度上平衡了Vue在组件方面存在的不足。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/06/Vue的优缺点/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1132,6 +1140,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">this指向</a>
               </li>
              
@@ -1140,11 +1152,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模块</a>
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,10 +1165,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闭包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,15 +1184,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">索引</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">内存泄露</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">setTimeout()</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">索引</a>
               </li>
             
             <div class="clearfix"></div>

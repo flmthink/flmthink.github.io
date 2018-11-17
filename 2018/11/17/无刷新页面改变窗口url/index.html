@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>git网络问题导致无法提交 | Flmthink</title>
+  <title>无刷新页面改变窗口url | Flmthink</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
-<meta name="keywords" content="git">
+  <meta name="description" content="相关文档：https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulatingthebrowser_history 实现目标 页面的跳转（前进后退，点击等）不重新请求页面 页面URL与页面展现内容一致（符合人们对传统网页的认识） 在不支持的浏览器下降级成传统网页的方式  使用到的APIhistory.state当前URL下对">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="git网络问题导致无法提交">
-<meta property="og:url" content="http://yoursite.com/2018/10/31/git网络错误问题/index.html">
+<meta property="og:title" content="无刷新页面改变窗口url">
+<meta property="og:url" content="http://yoursite.com/2018/11/17/无刷新页面改变窗口url/index.html">
 <meta property="og:site_name" content="Flmthink">
-<meta property="og:description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
+<meta property="og:description" content="相关文档：https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulatingthebrowser_history 实现目标 页面的跳转（前进后退，点击等）不重新请求页面 页面URL与页面展现内容一致（符合人们对传统网页的认识） 在不支持的浏览器下降级成传统网页的方式  使用到的APIhistory.state当前URL下对">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-10-31T07:37:31.962Z">
+<meta property="og:image" content="http://gtms01.alicdn.com/tps/i1/T1N9rZFdddXXbZIE3X-1200-900.png">
+<meta property="og:updated_time" content="2018-11-17T05:32:10.753Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="git网络问题导致无法提交">
-<meta name="twitter:description" content="问题:昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,这就很尴尬了,于是测试github连接(ssh -T git@github.com),提示”ssh_exchange_identification: read: Connection">
+<meta name="twitter:title" content="无刷新页面改变窗口url">
+<meta name="twitter:description" content="相关文档：https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulatingthebrowser_history 实现目标 页面的跳转（前进后退，点击等）不重新请求页面 页面URL与页面展现内容一致（符合人们对传统网页的认识） 在不支持的浏览器下降级成传统网页的方式  使用到的APIhistory.state当前URL下对">
+<meta name="twitter:image" content="http://gtms01.alicdn.com/tps/i1/T1N9rZFdddXXbZIE3X-1200-900.png">
   
     <link rel="alternative" href="/atom.xml" title="Flmthink" type="application/atom+xml">
   
@@ -153,31 +155,44 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-git网络错误问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-无刷新页面改变窗口url" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      git网络问题导致无法提交
+      无刷新页面改变窗口url
     </h1>
   
 
         
-        <a href="/2018/10/31/git网络错误问题/" class="archive-article-date">
-  	<time datetime="2018-10-31T06:36:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-31</time>
+        <a href="/2018/11/17/无刷新页面改变窗口url/" class="archive-article-date">
+  	<time datetime="2018-11-17T05:29:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="问题"><a href="#问题" class="headerlink" title="问题:"></a>问题:</h3><p>昨天还在关机前还提交了一次,今个提交就GG了,提示”Please make sure you have the correct access rights and the repository exists”,<br>这就很尴尬了,于是测试github连接(ssh -T <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>),提示”ssh_exchange_identification: read: Connection reset by peer”,<br>这是几个意思?搜索一下,得知大体意思是”连接被重置~~”.</p>
-<a id="more"></a>
-<h3 id="尝试"><a href="#尝试" class="headerlink" title="尝试:"></a>尝试:</h3><p>​    1.重新生成并设置SSH      无效<br>    2.hosts文件修改, 还是不行<br>    3.前几天用了下码云,改过username,重设user.name和user.email,依旧无效;</p>
-<p>最后搜索到,Connection reset by peer问题,可能与网络有关,就有关防火墙什么的,吧啦吧啦–<br>再加上房东的网最近总出一个毛病就是,腾讯系的网站一律加载很慢,甚至加载不出来.</p>
-<p><b>于是将手机的4G网络共享给电脑,重新测试(hexo d)更新博客,成功了!!!</b></p>
+        <p>相关文档：<a href="https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating<em>the</em>browser_history</a></p>
+<h3 id="实现目标"><a href="#实现目标" class="headerlink" title="实现目标"></a>实现目标</h3><ol>
+<li>页面的跳转（前进后退，点击等）不重新请求页面</li>
+<li>页面URL与页面展现内容一致（符合人们对传统网页的认识）</li>
+<li>在不支持的浏览器下降级成传统网页的方式</li>
+</ol>
+<h3 id="使用到的API"><a href="#使用到的API" class="headerlink" title="使用到的API"></a>使用到的API</h3><h4 id="history-state"><a href="#history-state" class="headerlink" title="history.state"></a>history.state</h4><p>当前URL下对应的状态信息。如果当前URL不是通过pushState或者replaceState产生的，那么history.state是null。</p>
+<h4 id="history-pushState-state-title-url"><a href="#history-pushState-state-title-url" class="headerlink" title="history.pushState(state, title, url)"></a>history.pushState(state, title, url)</h4><p>将当前URL和history.state加入到history中，并用新的state和URL替换当前。不会造成页面刷新。</p>
+<p>state：与要跳转到的URL对应的状态信息。</p>
+<p>title：不知道干啥用，传空字符串就行了。</p>
+<p>url：要跳转到的URL地址，不能跨域。</p>
+<h4 id="history-replaceState-state-title-url"><a href="#history-replaceState-state-title-url" class="headerlink" title="history.replaceState(state, title, url)"></a>history.replaceState(state, title, url)</h4><p>用新的state和URL替换当前。不会造成页面刷新。</p>
+<p>state：与要跳转到的URL对应的状态信息。</p>
+<p>title：不知道干啥用，传空字符串就行了。</p>
+<p>url：要跳转到的URL地址，不能跨域。</p>
+<h4 id="window-onpopstate"><a href="#window-onpopstate" class="headerlink" title="window.onpopstate"></a>window.onpopstate</h4><p>history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取history.state。</p>
+<h3 id="支持性判断"><a href="#支持性判断" class="headerlink" title="支持性判断"></a>支持性判断</h3><p>if (‘pushState’ in history) {…}</p>
+<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>用户通过“点击触发”，“操作历史”，“直接访问URL”的方式修改当前URL。这三种触发方式会使浏览器做出不同的行为。如果页面做无刷跳转，那么页面具体显示什么内容需要js来控制，js则需要根据一些信息来知道当前应该显示什么内容，这个信息就是history.state。这样我们只要保持URL和history.state一一对应，就能保证URL和内容一一对应。大部分情况下URL和history.state都是一一对应的，但通过直接URL访问页面的方式进入页面，history.state是null，所以我们需要把URL转换成对应的history.state写入。我们不能直接写入history.state，需要通过replaceState的方式写入。对于不支持pushstate的浏览器，一律修改href跳转页面，等同于直接访问URL。示意图如下。 <img src="http://gtms01.alicdn.com/tps/i1/T1N9rZFdddXXbZIE3X-1200-900.png" alt="img"></p>
 
       
 
@@ -191,7 +206,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
         		</li>
       		
 		</ul>
@@ -247,7 +262,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/10/31/git网络错误问题/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/11/17/无刷新页面改变窗口url/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -261,18 +276,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/10/31/等于和不等于的运算机制/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (==/!=与===/!==)的运算规则
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/10/30/js构造函数返回值问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">js构造函数返回值(return语句)问题</div>
+    <a href="/2018/11/13/commomJS与ES6导出与导入模块/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">commomJS与ES6导出与导入模块</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -299,7 +305,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#问题"><span class="toc-number">1.</span> <span class="toc-text">问题:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#尝试"><span class="toc-number">2.</span> <span class="toc-text">尝试:</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#实现目标"><span class="toc-number">1.</span> <span class="toc-text">实现目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用到的API"><span class="toc-number">2.</span> <span class="toc-text">使用到的API</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#history-state"><span class="toc-number">2.1.</span> <span class="toc-text">history.state</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#history-pushState-state-title-url"><span class="toc-number">2.2.</span> <span class="toc-text">history.pushState(state, title, url)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#history-replaceState-state-title-url"><span class="toc-number">2.3.</span> <span class="toc-text">history.replaceState(state, title, url)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#window-onpopstate"><span class="toc-number">2.4.</span> <span class="toc-text">window.onpopstate</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#支持性判断"><span class="toc-number">3.</span> <span class="toc-text">支持性判断</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现思路"><span class="toc-number">4.</span> <span class="toc-text">实现思路</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -330,7 +336,7 @@ if(true){
   	repo: 'flmthink.github.io',
   	owner: 'flmthink',
   	admin: ['flmthink'],
-  	id: 'Wed Oct 31 2018 14:36:07 GMT+0800',
+  	id: 'Sat Nov 17 2018 13:29:05 GMT+0800',
   	distractionFreeMode: 'true'
 })
 gitalk.render('gitalk-container') 
