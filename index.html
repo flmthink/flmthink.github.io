@@ -153,6 +153,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-工作第一天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/22/工作第一天/">工作第一天</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/22/工作第一天/" class="archive-article-date">
+  	<time datetime="2018-11-22T00:48:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天,转行工作第一天,甚至可以说是大学毕业三年以来,第一次进公司工作;<br>人有点晕晕的,回想一下办了不少细节上的蠢事;</p>
+<p>听到办公室同事说起了一个词<strong>“位运算”</strong>,用其判断整数为奇或偶;不明白是啥,赶紧百度一下:</p>
+<p><strong>程序中的所有数在计算机内存中都是以二进制的形式储存的。位运算就是直接对整数在内存中的二进制位进行操作</strong></p>
+<p>ECMAScript 整数有两种类型，即有符号整数（允许用正数和负数）和无符号整数（只允许用正数）。总共32位,最前面一位(即第32位),0代表正数,1代表负数;<br>但是ES中做了内部操作,如下:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> n=<span class="number">18</span>;</span><br><span class="line"><span class="keyword">var</span> m=<span class="number">-18</span>;</span><br><span class="line">alert(n.toString(<span class="number">2</span>))  <span class="comment">// 输出 10010</span></span><br><span class="line">alert(m.toString(<span class="number">2</span>))  <span class="comment">// 输出 -10010  (直接在18基础上加了-号)</span></span><br></pre></td></tr></table></figure>
+<p>使得负数运算时不必再关注 反码及补码的操作</p>
+        
+          <a class="article-more-a" href="/2018/11/22/工作第一天/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">位运算</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/22/工作第一天/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-无刷新页面改变窗口url" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -814,7 +899,7 @@
       
         <h3 id="什么是事件冒泡"><a href="#什么是事件冒泡" class="headerlink" title="什么是事件冒泡?"></a>什么是事件冒泡?</h3><p>说白了就是子元素设置了事件,触发时,会把事件由内到外传递给每一级元素,直到window;(这里传递的仅是事件触发,并不是事件函数)</p>
 <p>所以即使子元素把自己的事件触发传给了父元素,但是父元素并未设置该事件的相关事件处理函数,也就没什么效果</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;&lt;/div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">'father'</span>&gt;</span><br><span class="line">    &lt;div id=<span class="string">'son'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">--------------------------------</span></span><br><span class="line"><span class="regexp">document.getElementById('father').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('father')</span></span><br><span class="line"><span class="regexp">&#125;,false);</span></span><br><span class="line"><span class="regexp">document.getElementById('son').addEventlistener('click',function()&#123;</span></span><br><span class="line"><span class="regexp">    console.log('son')</span></span><br><span class="line"><span class="regexp">&#125;,false)</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/当点击son元素时, 以此输出 son father</span></span><br></pre></td></tr></table></figure>
 <h4 id="事件捕获"><a href="#事件捕获" class="headerlink" title="事件捕获"></a>事件捕获</h4><p>与事件冒泡相对应的还有事件捕获,该怎么理解呢?</p>
 <p>可以这么比喻,警察抓捕躲在大楼某个房间的小偷,总得先从外向内进入,这就叫做捕获;当抓住之后得把他带出来吧,就得从里往外出来,这就叫冒泡;</p>
 <p>运用下面这个函数,更容易理解:</p>
@@ -960,89 +1045,6 @@
 
 
   
-    <article id="post-js中内存机制与回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/07/js中内存机制与回收机制/">js中内存机制与回收机制</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/07/js中内存机制与回收机制/" class="archive-article-date">
-  	<time datetime="2018-11-06T19:00:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-内存机制"><a href="#1-内存机制" class="headerlink" title="1.内存机制"></a>1.内存机制</h2><h3 id="1-1内存模型"><a href="#1-1内存模型" class="headerlink" title="1.1内存模型:"></a>1.1内存模型:</h3><p>js内存空间分为<strong>栈(stack),堆(heap),池</strong>;其中:</p>
-<p><strong>栈</strong>存放基本数据类型;</p>
-<p><strong>堆</strong>存放引用数据类型;</p>
-<p><strong>池</strong>存放常量,一般池也归属<strong>栈</strong>中;</p>
-        
-          <a class="article-more-a" href="/2018/11/07/js中内存机制与回收机制/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">内存</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/07/js中内存机制与回收机制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1140,23 +1142,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模块</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">this指向</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1168,7 +1162,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,11 +1182,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件冒泡</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
+                <a href="javascript:void(0)" class="js-tag color3">索引</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,10 +1199,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">setTimeout()</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">索引</a>
               </li>
             
             <div class="clearfix"></div>
