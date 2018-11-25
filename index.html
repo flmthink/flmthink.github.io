@@ -153,6 +153,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-webpack学习-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/25/webpack学习-一/">webpack学习(一. package.json下script项)</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/25/webpack学习-一/" class="archive-article-date">
+  	<time datetime="2018-11-25T15:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当我试着去理解同事给我的一个项目时,才发现那些视频教程上提及的东西远远还达不到真实项目的水平,以至于整个人完全懵逼的一个状态;<br>vuetool:source-map是干嘛的?<br>iview是ui组件库吗?<br>以前做的demo都是定义一个’dev’脚本和一个’build’脚本,为什么现在还有init~start~qasbuild~testbuild~devbuild,都是干嘛的?<br>配置项resolve?没见过啊…….<br>给的项目源代码在我电脑上怎么报错跑不起来?<br>太多太多没见过的了</p>
+<p>没办法,慢慢啃吧</p>
+<h3 id="package-json下script项"><a href="#package-json下script项" class="headerlink" title="package.json下script项"></a>package.json下script项</h3><p>当用npm构建一个项目的时候,项目根目录下就会有一个package.json文件还有一个package-lock.json,大体就是记录项目依赖的,具体两文件区别后续再做具体总结;<br>package.json,既然是json文件,那就得严格写,不能有注释,不然报错;</p>
+<p><strong>scripts</strong>,顾名思义—脚本:定义npm运行命令缩写;</p>
+        
+          <a class="article-more-a" href="/2018/11/25/webpack学习-一/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/25/webpack学习-一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-工作第一天" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -274,9 +353,9 @@
 <p>title：不知道干啥用，传空字符串就行了。</p>
 <p>url：要跳转到的URL地址，不能跨域。</p>
 <h4 id="window-onpopstate"><a href="#window-onpopstate" class="headerlink" title="window.onpopstate"></a>window.onpopstate</h4><p>history.go和history.back（包括用户按浏览器历史前进后退按钮）触发，并且页面无刷的时候（由于使用pushState修改了history）会触发popstate事件，事件发生时浏览器会从history中取出URL和对应的state对象替换当前的URL和history.state。通过event.state也可以获取history.state。</p>
-<h3 id="支持性判断"><a href="#支持性判断" class="headerlink" title="支持性判断"></a>支持性判断</h3><p>if (‘pushState’ in history) {…}</p>
-<h3 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h3><p>用户通过“点击触发”，“操作历史”，“直接访问URL”的方式修改当前URL。这三种触发方式会使浏览器做出不同的行为。如果页面做无刷跳转，那么页面具体显示什么内容需要js来控制，js则需要根据一些信息来知道当前应该显示什么内容，这个信息就是history.state。这样我们只要保持URL和history.state一一对应，就能保证URL和内容一一对应。大部分情况下URL和history.state都是一一对应的，但通过直接URL访问页面的方式进入页面，history.state是null，所以我们需要把URL转换成对应的history.state写入。我们不能直接写入history.state，需要通过replaceState的方式写入。对于不支持pushstate的浏览器，一律修改href跳转页面，等同于直接访问URL。示意图如下。 <img src="http://gtms01.alicdn.com/tps/i1/T1N9rZFdddXXbZIE3X-1200-900.png" alt="img"></p>
-
+        
+          <a class="article-more-a" href="/2018/11/17/无刷新页面改变窗口url/#more">more >></a>
+        
       
 
       
@@ -962,89 +1041,6 @@
 
 
   
-    <article id="post-js内存泄露" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/07/js内存泄露/">js内存泄露</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/07/js内存泄露/" class="archive-article-date">
-  	<time datetime="2018-11-06T21:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h3><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
-<p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
-<p>不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。</p>
-<h3 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h3>
-        
-          <a class="article-more-a" href="/2018/11/07/js内存泄露/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存泄露</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/07/js内存泄露/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1154,23 +1150,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,11 +1174,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件冒泡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
               </li>
              
               <li class="article-tag-list-item">

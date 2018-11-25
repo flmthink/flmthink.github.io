@@ -153,6 +153,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-js内存泄露" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/07/js内存泄露/">js内存泄露</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/07/js内存泄露/" class="archive-article-date">
+  	<time datetime="2018-11-06T21:05:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-什么叫内存泄露"><a href="#1-什么叫内存泄露" class="headerlink" title="1.什么叫内存泄露"></a>1.什么叫内存泄露</h3><p>程序的运行需要内存。只要程序提出要求，操作系统或者运行时（runtime）就必须供给内存。</p>
+<p>对于持续运行的服务进程（daemon），必须及时释放不再用到的内存。否则，内存占用越来越高，轻则影响系统性能，重则导致进程崩溃。</p>
+<p>不再用到的内存，没有及时释放，就叫做内存泄漏（memory leak）。</p>
+<h3 id="2-内存泄露的几种常见类型"><a href="#2-内存泄露的几种常见类型" class="headerlink" title="2.内存泄露的几种常见类型"></a>2.内存泄露的几种常见类型</h3>
+        
+          <a class="article-more-a" href="/2018/11/07/js内存泄露/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内存泄露</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/07/js内存泄露/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-js中内存机制与回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -870,72 +953,6 @@
 
 
   
-    <article id="post-半个五角星变黄" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/03/半个五角星变黄/">半个五角星变黄</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/03/半个五角星变黄/" class="archive-article-date">
-  	<time datetime="2018-11-02T16:13:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>各种网站或者app上,都会有对美食丶电影丶书籍…..的评星,下面就写一个实现办法:</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"star"</span>&gt;</span>★★★★★<span class="tag">&lt;<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.star</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;   <span class="comment">//底层灰色字体</span></span><br><span class="line">    <span class="attribute">position</span>: relative;  <span class="comment">//子绝父相</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.star</span>::after&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">"★★★★★"</span>;</span><br><span class="line">    <span class="attribute">color</span>: orange;  <span class="comment">//设置字体颜色,橙色</span></span><br><span class="line">    <span class="attribute">position</span>: absolute;  <span class="comment">//通过设置伪元素绝对定位,实现两排★★★★★重叠</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">90%</span>; <span class="comment">//设置百分比宽度,如若80%,那就是四颗黄色的星星,故可以通过js获取具体评分,计算得到具体百分比,然后动态的设置width</span></span><br><span class="line">    <span class="attribute">overflow</span>: hidden;  <span class="comment">//将超出部分隐藏,于是就显露除了下面灰色星星</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>无非就是障眼法,两层星星叠在一起,<br>前面的设置overflow:hidden超出隐藏,通过设置width:n%,实现隐藏的长短,漏出底层的灰色星星;</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/03/半个五角星变黄/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1045,23 +1062,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">闭包</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1073,11 +1086,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
+                <a href="javascript:void(0)" class="js-tag color2">js构造函数</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">事件冒泡</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">位运算</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">睡不着发疯</a>
               </li>
              
               <li class="article-tag-list-item">
